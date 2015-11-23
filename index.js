@@ -6,6 +6,10 @@ module.exports = class Trailpack {
     this.app = app
   }
 
+  getName () {
+    throw new Error('Trailpack.getName() not implemented')
+  }
+
   validate () {
 
   }
