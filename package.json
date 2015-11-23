@@ -20,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/trailsjs/trailpack/issues"
   },
-  "homepage": "https://github.com/trailsjs/trailpack#readme"
+  "homepage": "https://github.com/trailsjs/trailpack#readme",
+  "dependencies": {}
 }

@@ -2,8 +2,12 @@
 
 module.exports = class Trailpack {
 
-  constructor (trails) {
-    this.app = trails
+  constructor (app) {
+    this.app = app
+  }
+
+  validate () {
+
   }
 
   configure () {
