@@ -7,19 +7,19 @@ module.exports = class Trailpack {
   }
 
   getName () {
-    throw new Error('Trailpack.getName() not implemented')
+    return Promise.reject('Trailpack.getName() not implemented')
   }
 
   validate () {
-
+    return Promise.resolve()
   }
 
   configure () {
-    throw new Error('Trailpack.configure() not implemented')
+    return Promise.resolve()
   }
 
   initialize () {
-    throw new Error('Trailpack.initialize() not implemented')
+    return Promise.resolve()
   }
 
 }
