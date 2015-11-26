@@ -18,6 +18,15 @@ module.exports = class Trailpack {
   }
 
   /**
+   * Return the configuration of this trailpack. If you're writing a trailpack,
+   * utilize this.config intentionally. This object is merged with app.config,
+   * so don't shove random crap in there.
+   */
+  get config () {
+    return this.config
+  }
+
+  /**
    * Test the sanity of this trailpack.
    * @return Promise
    */
