@@ -1,5 +1,6 @@
 'use strict'
 
+const _ = require('lodash')
 const joi = require('joi')
 const util = require('./util')
 
@@ -8,6 +9,8 @@ module.exports = class Trailpack {
   constructor (app, config) {
     this.app = app
     this.config = config
+
+    _.defaultsDeep(this.app.config, this.config)
   }
 
   /**
