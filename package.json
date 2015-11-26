@@ -21,5 +21,7 @@
     "url": "https://github.com/trailsjs/trailpack/issues"
   },
   "homepage": "https://github.com/trailsjs/trailpack#readme",
-  "dependencies": {}
+  "dependencies": {
+    "joi": "^7.0.0"
+  }
 }
