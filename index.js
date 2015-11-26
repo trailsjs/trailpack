@@ -7,10 +7,10 @@ const util = require('./util')
 module.exports = class Trailpack {
 
   constructor (app, config) {
-    this.app = app
-    this.config = config
+    _.defaultsDeep(app.config, config || { })
 
-    _.defaultsDeep(this.app.config, this.config)
+    this.app = app
+    this.config = app.config
   }
 
   /**
@@ -18,15 +18,6 @@ module.exports = class Trailpack {
    */
   get name () {
     return this.config.trailpack.name
-  }
-
-  /**
-   * Return the configuration of this trailpack. If you're writing a trailpack,
-   * utilize this.config intentionally. This object is merged with app.config,
-   * so don't shove random crap in there.
-   */
-  get config () {
-    return this.config
   }
 
   /**
@@ -41,7 +32,7 @@ module.exports = class Trailpack {
         return resolve(value)
       })
     })
-  },
+  }
 
   /**
    * Validate any necessary preconditions for this trailpack. 
