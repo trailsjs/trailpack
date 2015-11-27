@@ -6,11 +6,17 @@ const util = require('./util')
 
 module.exports = class Trailpack {
 
-  constructor (app, config) {
+  /**
+   * @param app TrailsApp instance
+   * @param config
+   * @param [api]
+   */
+  constructor (app, config, api) {
     _.extend(this, config.trailpack)
 
     delete config.trailpack
     _.defaultsDeep(app.config, config)
+    _.defaultsDeep(app.api, api || { })
 
     this.app = app
     this.config = app.config
