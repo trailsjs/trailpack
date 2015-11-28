@@ -15,11 +15,18 @@ module.exports = class Trailpack {
     _.extend(this, config.trailpack)
 
     delete config.trailpack
-    _.defaultsDeep(app.config, config)
+    _.defaultsDeep(app.config, config || { })
     _.defaultsDeep(app.api, api || { })
 
     this.app = app
     this.config = app.config
+  }
+
+  /**
+   * Return the name of this Trailpack
+   */
+  get name () {
+    return this.constructor.name.toLowerCase()
   }
 
   /**
