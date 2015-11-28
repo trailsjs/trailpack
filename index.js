@@ -64,17 +64,4 @@ module.exports = class Trailpack {
   initialize () {
     return this.app.after('trailpack:core:initialized')
   }
-
-  /**
-   * @override
-   */
-  inspect () {
-    return `
-      ---------------------------------------------------------------
-      Trailpack:
-        Name            : ${this.name}
-        Version         : ${this.pkg.version}
-        Description     : ${this.pkg.description}
-      ---------------------------------------------------------------`
-  }
 }
