@@ -26,5 +26,12 @@
   "homepage": "https://github.com/trailsjs/trailpack#readme",
   "dependencies": {
     "lodash": "^3.10.1"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "mocha": true,
+      "node": true
+    }
   }
 }
