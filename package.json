@@ -1,7 +1,7 @@
 {
   "name": "trailpack",
   "version": "0.0.0",
-  "description": "Trailpack",
+  "description": "Trailpack Interface. Trailpacks extend the functionality of the Trails framework.",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -13,7 +13,10 @@
   "keywords": [
     "trails",
     "trailsjs",
-    "trailpack"
+    "trailpack",
+    "interface",
+    "sails",
+    "sailsjs"
   ],
   "author": "Travis Webb <me@traviswebb.com>",
   "license": "MIT",
@@ -22,7 +25,6 @@
   },
   "homepage": "https://github.com/trailsjs/trailpack#readme",
   "dependencies": {
-    "joi": "^7.0.0",
     "lodash": "^3.10.1"
   }
 }
