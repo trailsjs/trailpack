@@ -1,8 +1,6 @@
 'use strict'
 
 const _ = require('lodash')
-const joi = require('joi')
-const util = require('./util')
 
 /**
  * @class Trailpack 
@@ -28,23 +26,10 @@ module.exports = class Trailpack {
 
   /**
    * Return the name of this Trailpack
+   * @return String
    */
   get name () {
     return this.constructor.name.toLowerCase()
-  }
-
-  /**
-   * Test the sanity of this trailpack.
-   * @return Promise
-   */
-  test () {
-    return new Promise((resolve, reject) => {
-      joi.validate(this.config, util.trailpackSchema, (err, value) => {
-        if (err) return reject(err)
-
-        return resolve(value)
-      })
-    })
   }
 
   /**
@@ -57,6 +42,7 @@ module.exports = class Trailpack {
 
   /**
    * Set any configuration required before the trailpacks are initialized.
+   * @return Promise
    */
   configure () {
     return this.app.after('trailpack:core:configured')
@@ -64,6 +50,7 @@ module.exports = class Trailpack {
 
   /**
    * Start any services or listeners necessary for this pack
+   * @return Promise
    */
   initialize () {
     return this.app.after('trailpack:core:initialized')
