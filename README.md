@@ -34,18 +34,18 @@ class HipsterMagic extends Trailpack {
 
 ## API
 
-### `validate()`
+#### `validate()`
 Validate the preconditions for proper functioning of this trailpack. For
 example, if this trailpack requires that a database is configured in
 `config/database.js`, this method should validate this. This method should incur
 no side-effects. *Do not alter any extant configuration.*
 
-### `configure()`
+#### `configure()`
 Extend the configuration (`config/`, or `app.config`) of the application, or
 add new configuration objects. This method is run before the application
 has loaded.
 
-### `initialize()`
+#### `initialize()`
 If you need to bind any event listeners, start servers, connect to databases,
 all of that should be done in initialize. Here, all of the configuration is
 loaded and finalized.
@@ -53,6 +53,7 @@ loaded and finalized.
 ## Contributing
 We love contributions! In order to be able to review your code efficiently,
 please keep the following in mind:
+
 1. Pull Requests (PRs) must include new and/or updated tests, and all tests [must pass](https://travis-ci.org/trailsjs/trailpack).
 2. Use `eslint`! See the `eslintConfig` in [package.json](https://github.com/trailsjs/trailpack/blob/master/package.json).
 3. Please [reference the relevant issue](https://github.com/blog/1506-closing-issues-via-pull-requests) in your Pull Request.
