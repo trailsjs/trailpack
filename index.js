@@ -4,6 +4,10 @@ const _ = require('lodash')
 const joi = require('joi')
 const util = require('./util')
 
+/**
+ * @class Trailpack 
+ * @see {@link http://trailsjs.io/doc/trailpack}
+ */
 module.exports = class Trailpack {
 
   /**
