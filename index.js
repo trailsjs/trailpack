@@ -11,8 +11,9 @@ module.exports = class Trailpack {
 
   /**
    * @param app TrailsApp instance
-   * @param config
-   * @param [api]
+   * @param module the module of the pack
+   * @param [config] the pack's configuration
+   * @param [api] the pack's api resources
    */
   constructor (app, module, config, api) {
     this.module = module

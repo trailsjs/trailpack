@@ -1,5 +1,6 @@
 # trailpack
 
+[![Gitter][gitter-image]][gitter-url]
 [![NPM version][npm-image]][npm-url]
 [![Build status][ci-image]][ci-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
@@ -10,14 +11,14 @@ framework. (**Application functionality** should be extended using
 [Microservices](https://github.com/trailsjs/trailpack-microservices)).
 
 ## Usage
-This module is a class, which should be extended by all trailpacks.
+This module is a class which should be extended by all trailpacks.
 
 ```js
 const Trailpack = require('trailpack')
 
 class HipsterMagic extends Trailpack {
   constructor (app) {
-    super(app, require('./config'), require('./api'))
+    super(app, module, require('./config'), require('./api'))
   }
 
   // ...
@@ -33,6 +34,9 @@ class HipsterMagic extends Trailpack {
 4. `app.ready`
 
 ## API
+
+#### `constructor(app, module, config, api)`
+Instantiate the Trailpack. `config` and `api` are optional arguments.
 
 #### `validate()`
 Validate the preconditions for proper functioning of this trailpack. For
@@ -69,3 +73,6 @@ please keep the following in mind:
 [daviddm-url]: https://david-dm.org/trailsjs/trailpack
 [codeclimate-image]: https://img.shields.io/codeclimate/github/trailsjs/trailpack.svg?style=flat-square
 [codeclimate-url]: https://codeclimate.com/github/trailsjs/trailpack
+[gitter-image]: http://img.shields.io/badge/+%20GITTER-JOIN%20CHAT%20%E2%86%92-1DCE73.svg?style=flat-square
+[gitter-url]: https://gitter.im/trailsjs/trails
+
