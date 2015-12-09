@@ -18,7 +18,11 @@ const Trailpack = require('trailpack')
 
 class HipsterMagic extends Trailpack {
   constructor (app) {
-    super(app, module, require('./config'), require('./api'))
+    super(app, {
+      config: require('./config'),
+      api: require('./api'),
+      pkg: require('./package')
+    })
   }
 
   // ...
