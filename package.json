@@ -4,7 +4,7 @@
   "description": "Trailpack Interface. Trailpacks extend the functionality of the Trails framework.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "eslint . && mocha"
   },
   "repository": {
     "type": "git",
@@ -28,10 +28,11 @@
     "lodash": "^3.10.1"
   },
   "eslintConfig": {
-    "env": {
-      "es6": true,
-      "mocha": true,
-      "node": true
-    }
+    "extends": "trails"
+  },
+  "devDependencies": {
+    "eslint": "^1.10.3",
+    "eslint-config-trails": "0.0.9",
+    "mocha": "^2.3.4"
   }
 }
