@@ -80,6 +80,5 @@ module.exports = class Trailpack {
    */
   unload () {
     delete require.cache[require.resolve(this.module.id)]
-    return this.app.after(`trailpack:${this.name}:unloaded`)
   }
 }
