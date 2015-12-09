@@ -1,6 +1,6 @@
 {
   "name": "trailpack",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Trailpack Interface. Trailpacks extend the functionality of the Trails framework.",
   "main": "index.js",
   "scripts": {
