@@ -17,7 +17,7 @@ module.exports = class Trailpack {
    */
   constructor (app, module, config, api) {
     this.module = module
-    this.config = config
+    this.config = config.trailpack
     this.app = app
 
     _.defaultsDeep(app.config, _.omit(config, 'trailpack') || { })
