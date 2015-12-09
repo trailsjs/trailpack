@@ -1,8 +1,7 @@
 'use strict'
 
 const _ = require('lodash')
-const path = require('path')
-
+const Util = require('./lib/util')
 /**
  * @class Trailpack
  * @see {@link http://trailsjs.io/doc/trailpack}
@@ -11,35 +10,16 @@ module.exports = class Trailpack {
 
   /**
    * @param app TrailsApp instance
-   * @param module the module of the pack
    * @param [config] the pack's configuration
    * @param [api] the pack's api resources
    */
-  constructor (app, module, config, api) {
-    this.module = module
-    this.config = config.trailpack || { }
+  constructor (app, pack) {
     this.app = app
+    this.config = pack.config || { }
+    this.pkg = pack.pkg || { }
 
-    _.defaultsDeep(app.config, _.omit(config, 'trailpack') || { })
-    _.defaultsDeep(app.api, api || { })
-  }
-
-  /**
-   * Return the package definition for this trailpack. Helpful for
-   * validating versions and other such package-y things. This getter will
-   * dynamically require the package based on the given "module.id". This is
-   * one of the few instances of dynamic-require magic in the trails.js
-   * famework.
-   */
-  get pkg () {
-    const modulePath = require.resolve(this.module.id)
-    try {
-      return require(path.resolve(path.dirname(modulePath), 'package'))
-    }
-    catch (e) {
-      this.app.log.warn(e)
-      return { }
-    }
+    _.defaultsDeep(app.config, _.omit(pack.config, 'trailpack') || { })
+    _.defaultsDeep(app.api, pack.api || { })
   }
 
   /**
@@ -50,7 +30,7 @@ module.exports = class Trailpack {
    * @return String
    */
   get name () {
-    return this.config.name || this.constructor.name.toLowerCase()
+    return this.pkg.name.replace(/^trailpack\-/, '')
   }
 
   /**
@@ -82,7 +62,16 @@ module.exports = class Trailpack {
    * pack map (app.packs) as well as from the Node module cache
    * (require.cache).
    */
-  unload () {
-    delete require.cache[require.resolve(this.module.id)]
+  unload (resolvedPath) {
+    return new Promise((resolve, reject) => {
+      const result = Util.unloadModule(resolvedPath || this.pkg.name)
+      if (result === true) {
+        resolve()
+        this.app.emit(`trailpack:${this.name}:unloaded`)
+      }
+      else {
+        reject(result)
+      }
+    })
   }
 }
