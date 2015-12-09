@@ -17,7 +17,7 @@ module.exports = class Trailpack {
    */
   constructor (app, module, config, api) {
     this.module = module
-    this.config = config.trailpack
+    this.config = config.trailpack || { }
     this.app = app
 
     _.defaultsDeep(app.config, _.omit(config, 'trailpack') || { })
@@ -43,7 +43,10 @@ module.exports = class Trailpack {
   }
 
   /**
-   * Return the name of this Trailpack
+   * Return the name of this Trailpack. Returns the name set in the
+   * config/trailpack if it exists; otherwise, returns the lowercased name of
+   * this here class here.
+   *
    * @return String
    */
   get name () {
