@@ -11,7 +11,7 @@ module.exports = class Trailpack {
   /**
    * @param app TrailsApp instance
    * @param [config] the pack's configuration
-   * @param [api] the pack's api resources
+   * @param [pack] the pack definition
    */
   constructor (app, pack) {
     this.app = app
@@ -38,7 +38,7 @@ module.exports = class Trailpack {
    * @return Promise
    */
   validate () {
-    return this.app.after(`trailpack:${this.name}:validated`)
+
   }
 
   /**
@@ -46,7 +46,7 @@ module.exports = class Trailpack {
    * @return Promise
    */
   configure () {
-    return this.app.after(`trailpack:${this.name}:configured`)
+
   }
 
   /**
@@ -54,7 +54,7 @@ module.exports = class Trailpack {
    * @return Promise
    */
   initialize () {
-    return this.app.after(`trailpack:${this.name}:initialized`)
+
   }
 
   /**
@@ -75,3 +75,4 @@ module.exports = class Trailpack {
     })
   }
 }
+
