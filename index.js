@@ -2,6 +2,8 @@
 
 const _ = require('lodash')
 const Util = require('./lib/util')
+const defaultConfig = require('./config')
+
 /**
  * @class Trailpack
  * @see {@link http://trailsjs.io/doc/trailpack}
@@ -15,7 +17,7 @@ module.exports = class Trailpack {
    */
   constructor (app, pack) {
     this.app = app
-    this.config = pack.config || { }
+    this.config = _.defaultsDeep(pack.config || { }, defaultConfig.trailpack)
     this.pkg = pack.pkg || { }
 
     _.defaultsDeep(app.config, _.omit(pack.config, 'trailpack') || { })
