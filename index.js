@@ -17,7 +17,7 @@ module.exports = class Trailpack {
    */
   constructor (app, pack) {
     this.app = app
-    this.config = _.defaultsDeep(pack.config || { }, defaultConfig.trailpack)
+    this.config = _.defaultsDeep(pack.config.trailpack || { }, defaultConfig.trailpack)
     this.pkg = pack.pkg || { }
 
     _.defaultsDeep(app.config, _.omit(pack.config, 'trailpack') || { })
