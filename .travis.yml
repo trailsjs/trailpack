@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - '4'
-- 'stable'
+- stable
 
 notifications:
   email: false
@@ -15,7 +15,8 @@ deploy:
   provider: npm
   email: hello@trailsjs.io
   api_key:
-    secure: MQFwOE71zhWb6wD7wRyXlUfvsgWlK3V2Yks4r6IgmMjcxtudvgNIyOQloUo8jZFJ3SzZKjOoPpr+qMyz4EJAlm8Xpj7MLOvMQ0oyWyLe5Kw21KvdQv3QtpOPi1jbsySed+N4rj+zsRlfHbeGWHe8UdCNshh6+Qyx1+ebqtrwtrrVU2GqwhBbK3BSU0CpZU3I+7c+SQ/P/aPz0ef5L/n6SGEaWJXozdVeQTFLgKWO7J4+JbeLKKsSsxQjPFqNB5AOdG1D+uCgu3mxF6Hra76zv4kzowZ9PwnuFqTsOyS6V1oUFA0epp7VyenFBFXwqKCW5oDMPnXluurZCbUupqn8nz140mRlr6fRI9zn3bEDYOB5CMK0po+nGQMJxwtUDydkniIEpnm/8A0Dh0BX67aTehPlz6U9tIGN4K0xG8b9ZZwl2b0DviVJYkVFMxA7ewzKITibxhY1mut8wpyerLQqBLxIBRbP53WnaH/4BB0Sp7SsKormn7o0KpqGy9cBfxlt7z+xeOnpJ2X3uCxWyZh0GfjsdKRn3KtlzqGiNfvDEesiR3d5ZdbD1Ea9/VoSFuDwc9uk7+c9Gje4bgkuETifpl2Cuh4fkamShKKQpG30jxGnWhbxgpF22Wa8RjaiTvex+mKKSCmSn/sU8LE4cMAMUTlu8+Hd9KpnRwEH2Du79SY=
+    secure: rsu0xEkxmIyXfwuwJ8bzMOHwASLbxUyOSTKFv85Ta1+pVWednvJeK4CJQJ03iZjP1iY4REb9IKJX/SeCnU6JJ9iMOvCXG8sjXdih4qLLLSuBwsRwyAFPNCephIOsNhHR0n1fHrtxMdAZo9/aMnsvp24Jqwjd+5w7DRu+ja1IRN6N+20I7jl+bdSyS7eXmqkMNanwZMN7bKUyro91Kz6/RHLyuK7FkIhIBhmQUsqNyxkMhshc2RBVS9dqLCUyZ+tySPKojRlBl2Te/5Q/0s36ziz6gaM+7YaDP60w9fVBhc176b6+C9EmHuI5hSGbY5pzzL5iqwkWaAc8oYVQ2lm1xi4FRlFMVGoXz40TABoRUgsoas+YbKtaLXZ9CSY5BRyAC12xNIvJtCgxarkHndHOBwIqmEb+QVVjlDY4gN9vOWb+hqYx01M7qB0DWeccTzZ06yshYDwesphO91rC3Gbn4bi8CQ6V2iXU0fSuHCu/68JsTgpARCI8pR8B++WMbjnhdy4/4wQmHXdhaT5dG7dXOt0oOvNad8Fonk7NfanE9KB80q5QJjfs95GijpzKRfH21Wc9V9GPFjUte9BLCvi+oke+eElXJcw6ad3DCAMiz38JXsjDNnj9knQ2s1leskyvRaSc6qGUBsL3SdG0cclfLelk1rsepjwc+/QtcEEYaII=
   on:
     tags: true
     repo: trailsjs/trailpack
+    node: stable
