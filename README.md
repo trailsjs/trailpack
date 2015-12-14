@@ -13,6 +13,10 @@ framework. (**Application functionality** should be extended using
 ## Usage
 This module is a class which should be extended by all trailpacks.
 
+#### Implement
+
+See [`archetype/index.js`](https://github.com/trailsjs/trailpack/blob/master/archetype/index.js)
+for more details.
 ```js
 const Trailpack = require('trailpack')
 
@@ -29,6 +33,24 @@ class HipsterMagic extends Trailpack {
 }
 ```
 
+#### Configure
+
+See [`archetype/config/trailpack.js`](https://github.com/trailsjs/trailpack/blob/master/archetype/config/trailpack.js)
+for more details.
+```js
+// config/trailpack.js
+module.exports = {
+  provides: {
+    // ...
+  },
+
+  lifecycle: {
+    // ...
+  }
+}
+
+```
+
 ## Lifecycle
 
 0. `app.start`
@@ -39,8 +61,9 @@ class HipsterMagic extends Trailpack {
 
 ## API
 
-#### `constructor(app, module, config, api)`
-Instantiate the Trailpack. `config` and `api` are optional arguments.
+#### `constructor(app, definition)`
+Instantiate the Trailpack. `definition` is an object which contains three
+optional properties: `config`, `api`, `pkg`.
 
 #### `validate()`
 Validate the preconditions for proper functioning of this trailpack. For
@@ -51,7 +74,7 @@ no side-effects. *Do not alter any extant configuration.*
 #### `configure()`
 Extend the configuration (`config/`, or `app.config`) of the application, or
 add new configuration objects. This method is run before the application
-has loaded.
+has loaded. You can alter application configuration here.
 
 #### `initialize()`
 If you need to bind any event listeners, start servers, connect to databases,
@@ -59,12 +82,8 @@ all of that should be done in initialize. Here, all of the configuration is
 loaded and finalized.
 
 ## Contributing
-We love contributions! In order to be able to review your code efficiently,
-please keep the following in mind:
-
-1. Pull Requests (PRs) must include new and/or updated tests, and all tests [must pass](https://travis-ci.org/trailsjs/trailpack).
-2. Use `eslint`! See the `eslintConfig` in [package.json](https://github.com/trailsjs/trailpack/blob/master/package.json).
-3. Please [reference the relevant issue](https://github.com/blog/1506-closing-issues-via-pull-requests) in your Pull Request.
+We love contributions! Please see our [Contribution Guide](https://github.com/trailsjs/trails/blob/master/CONTRIBUTING.md)
+for more information.
 
 ## License
 [MIT](https://github.com/trailsjs/trailpack/blob/master/LICENSE)
