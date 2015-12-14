@@ -16,7 +16,11 @@ module.exports = {
     config: [ ]
   },
 
-  events: {
+  /**
+   * Configure the lifecycle of this pack; that is, how it boots up, and which
+   * order it loads relative to other trailpacks.
+   */
+  lifecycle: {
     configure: {
       /**
        * List of events that must be fired before the configure lifecycle
