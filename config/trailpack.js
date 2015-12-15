@@ -12,7 +12,7 @@ module.exports = {
     config: [ ]
   },
 
-  events: {
+  lifecycle: {
     configure: {
       listen: [ ],
       emit: [ ]
