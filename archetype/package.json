@@ -1,0 +1,31 @@
+{
+  "name": "trailpack-archetype",
+  "version": "0.0.0",
+  "main": "index.js",
+  "keywords": [
+    "trailpack",
+    "trails",
+    "trailjs"
+  ],
+  "dependencies": {
+    "trailpack": "latest"
+  },
+  "devDependencies": {
+    "eslint-config-trails": "latest",
+    "eslint": "^1.10",
+    "mocha": "^2.3"
+  },
+  "bundledDependencies": [
+    "trailpack"
+  ],
+  "scripts": {
+    "test": "eslint . && mocha"
+  },
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "eslintConfig": {
+    "extends": "trails"
+  }
+}
+
