@@ -1,6 +1,6 @@
 const Trailpack = require('trailpack')
 
-class Unnamed extends Trailpack {
+class Archetype extends Trailpack {
 
   /**
    * TODO document method
