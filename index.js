@@ -12,32 +12,36 @@ module.exports = class Trailpack {
 
   /**
    * @param app TrailsApp instance
-   * @param [config] the pack's configuration
-   * @param [pack] the pack definition
+   * @param pack.api The api entities defined in this trailpack (api/ folder)
+   * @param pack.config The trailpack configuration (config/ folder)
+   * @param pack.pkg The trailpack package.json
    */
   constructor (app, pack) {
+    if (!pack.pkg) {
+      throw new Error('Trailpack is missing package definitition ("app.pkg")')
+    }
+
     this.app = app
     this.config = _.defaultsDeep(pack.config.trailpack || { }, defaultConfig.trailpack)
-    this.pkg = pack.pkg || { }
+    this.pkg = pack.pkg
 
-    _.defaultsDeep(app.config, _.omit(pack.config, 'trailpack') || { })
-    _.defaultsDeep(app.api, pack.api || { })
+    _.defaultsDeep(app.config, _.omit(pack.config, 'trailpack'))
+    _.defaultsDeep(app.api, pack.api)
   }
 
   /**
-   * Return the name of this Trailpack. Returns the name set in the
-   * config/trailpack if it exists; otherwise, returns the lowercased name of
-   * this here class here.
+   * Return the name of this Trailpack. By default, this is the name of the
+   * npm module (in package.json). This method can be overridden for trailpacks
+   * which do not follow the "trailpack-" prefix naming convention.
    *
    * @return String
    */
   get name () {
-    return this.pkg.name.replace(/^trailpack\-/, '')
+    return this.pkg.name.replace(/trailpack\-/, '')
   }
 
   /**
    * Validate any necessary preconditions for this trailpack.
-   * @return Promise
    */
   validate () {
 
@@ -45,7 +49,6 @@ module.exports = class Trailpack {
 
   /**
    * Set any configuration required before the trailpacks are initialized.
-   * @return Promise
    */
   configure () {
 
@@ -53,7 +56,6 @@ module.exports = class Trailpack {
 
   /**
    * Start any services or listeners necessary for this pack
-   * @return Promise
    */
   initialize () {
 
