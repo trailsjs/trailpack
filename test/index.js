@@ -15,13 +15,13 @@ describe('Trailpack', () => {
     })
   })
 
-  describe('#unload', () => {
+  describe.skip('#expunge', () => {
     it('should release module from cache', () => {
       assert(require.cache)
       assert(require.cache[require.resolve('./pack')])
 
       // unload module!
-      return pack.unload(require.resolve('./pack'))
+      return pack.expunge(require.resolve('./pack'))
         .then(() => {
           assert.equal(require.cache[require.resolve('./pack')], undefined)
         })

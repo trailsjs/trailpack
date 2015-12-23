@@ -52,7 +52,7 @@ module.exports = class Trailpack {
    * preconditions.
    */
   validate () {
-
+    return Promise.resolve()
   }
 
   /**
@@ -61,7 +61,7 @@ module.exports = class Trailpack {
    * configuration, should override this method.
    */
   configure () {
-
+    return Promise.resolve()
   }
 
   /**
@@ -69,7 +69,7 @@ module.exports = class Trailpack {
    * run daemon-like services should override this method.
    */
   initialize () {
-
+    return Promise.resolve()
   }
 
   /**
@@ -78,7 +78,7 @@ module.exports = class Trailpack {
    * soon thereafter, or that it is about to be reloaded.
    */
   unload () {
-
+    return Promise.resolve()
   }
 
   /**
@@ -97,7 +97,7 @@ module.exports = class Trailpack {
   expunge () {
     return new Promise((resolve, reject) => {
       process.nextTick(() => {
-        const result = Util.unloadModule(this.pkg.name, this.app.config.main.paths.root)
+        const result = Util.expungeModule(this.pkg.name, this.app.config.main.paths.root)
         if (result === true) {
           resolve()
           this.app.emit(`trailpack:${this.name}:unloaded`)

@@ -1,6 +1,8 @@
 'use strict'
 
-const app = { }
+const app = {
+  config: require('./config')
+}
 const Trailpack = require('../../')
 
 module.exports = class TestPack extends Trailpack {
