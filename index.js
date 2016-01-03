@@ -34,6 +34,8 @@ module.exports = class Trailpack {
     _.merge(pack.config, _.get(pack.config.env, process.env.NODE_ENV))
     _.defaultsDeep(this.app.config, _.omit(pack.config, 'trailpack'))
     _.defaultsDeep(this.app.api, pack.api)
+
+    this.app.emit(`trailpack:${this.name}:constructed`)
   }
 
   /**
