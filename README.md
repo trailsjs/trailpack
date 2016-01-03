@@ -63,7 +63,8 @@ module.exports = {
 
 #### `constructor(app, definition)`
 Instantiate the Trailpack. `definition` is an object which contains three
-optional properties: `config`, `api`, `pkg`.
+optional properties: `config`, `api`, `pkg`. Trailpack configuration is merged
+into the application configuration.
 
 #### `validate()`
 Validate the preconditions for proper functioning of this trailpack. For
