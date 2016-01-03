@@ -35,6 +35,6 @@
     "eslint-config-trails": "*",
     "mocha": "^2.3.4",
     "smokesignals": "0.0.8",
-    "trails": "0.0.16"
+    "trails": "0.0.18"
   }
 }
