@@ -26,6 +26,9 @@ module.exports = class Trailpack {
     if (!pack.pkg) {
       throw new Error('Trailpack is missing package definitition ("pack.pkg")')
     }
+    if (!pack.config) {
+      pack.config = { }
+    }
 
     this.app = app
     this.config = _.defaultsDeep(pack.config.trailpack || { }, defaultConfig.trailpack)
