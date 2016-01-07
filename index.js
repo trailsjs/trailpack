@@ -1,6 +1,5 @@
 'use strict'
 
-const _ = require('lodash')
 const Util = require('./lib/util')
 const defaultConfig = require('./config')
 
@@ -31,12 +30,12 @@ module.exports = class Trailpack {
     }
 
     this.app = app
-    this.config = _.defaultsDeep(pack.config.trailpack || { }, defaultConfig.trailpack)
     this.pkg = pack.pkg
+    this.config = Util.mergeDefaultTrailpackConfig(pack.config.trailpack, defaultConfig)
 
-    _.merge(pack.config, _.get(pack.config.env, process.env.NODE_ENV))
-    _.defaultsDeep(this.app.config, _.omit(pack.config, 'trailpack'))
-    _.defaultsDeep(this.app.api, pack.api)
+    Util.mergeEnvironmentConfig(pack.config, pack.config.env)
+    Util.mergeApplication(this.app.api, pack.api)
+    Util.mergeApplicationConfig(this.app.config, pack.config)
 
     this.app.emit(`trailpack:${this.name}:constructed`)
   }
