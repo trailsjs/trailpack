@@ -18,7 +18,13 @@
     "sails",
     "sailsjs"
   ],
-  "author": "Travis Webb <me@traviswebb.com>",
+  "author": "Trails.js Team <hello@trailsjs.io>",
+  "contributors": [
+    {
+      "name": "Travis Webb",
+      "url": "https://github.com/tjwebb"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/trailsjs/trailpack/issues"
@@ -31,10 +37,10 @@
     "extends": "trails"
   },
   "devDependencies": {
-    "eslint": "next",
-    "eslint-config-trails": "*",
+    "eslint": "^2.0.0-alpha-2",
+    "eslint-config-trails": "^1.0.1",
     "mocha": "^2.3.4",
     "smokesignals": "0.0.8",
-    "trails": "0.0.16"
+    "trails": "0.0.22"
   }
 }
