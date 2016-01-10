@@ -23,7 +23,7 @@ module.exports = class Trailpack {
    */
   constructor (app, pack) {
     if (!pack.pkg) {
-      throw new Error('Trailpack is missing package definitition ("pack.pkg")')
+      throw new Error('Trailpack is missing package definition ("pack.pkg")')
     }
     if (!pack.config) {
       pack.config = { }
