@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/trailsjs/trailpack#readme",
   "dependencies": {
-    "lodash": "^4.0.0"
+    "lodash": "^3.10.1"
   },
   "eslintConfig": {
     "extends": "trails"
@@ -41,6 +41,6 @@
     "eslint-config-trails": "^1.0.1",
     "mocha": "^2.3.4",
     "smokesignals": "0.0.8",
-    "trails": "0.0.24"
+    "trails": "1.0.0-alpha-4"
   }
 }
