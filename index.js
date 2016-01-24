@@ -1,6 +1,6 @@
 'use strict'
 
-const Util = require('./lib/util')
+const lib = require('./lib')
 const defaultConfig = require('./config')
 
 /**
@@ -31,11 +31,11 @@ module.exports = class Trailpack {
 
     this.app = app
     this.pkg = pack.pkg
-    this.config = Util.mergeDefaultTrailpackConfig(pack.config.trailpack, defaultConfig)
+    this.config = lib.Util.mergeDefaultTrailpackConfig(pack.config.trailpack, defaultConfig)
 
-    Util.mergeEnvironmentConfig(pack.config, pack.config.env)
-    Util.mergeApplication(this.app.api, pack.api)
-    Util.mergeApplicationConfig(this.app.config, pack.config)
+    lib.Util.mergeEnvironmentConfig(pack.config, pack.config.env)
+    lib.Util.mergeApplication(this.app.api, pack.api)
+    lib.Util.mergeApplicationConfig(this.app.config, pack.config)
 
     this.app.emit(`trailpack:${this.name}:constructed`)
   }
@@ -102,7 +102,7 @@ module.exports = class Trailpack {
   expunge () {
     return new Promise((resolve, reject) => {
       process.nextTick(() => {
-        const result = Util.expungeModule(this.pkg.name, this.app.config.main.paths.root)
+        const result = lib.Util.expungeModule(this.pkg.name, this.app.config.main.paths.root)
         if (result === true) {
           resolve()
           this.app.emit(`trailpack:${this.name}:unloaded`)
