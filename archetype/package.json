@@ -1,6 +1,6 @@
 {
   "name": "trailpack-archetype",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "main": "index.js",
   "keywords": [
     "trailpack",
@@ -11,8 +11,8 @@
     "trailpack": "latest"
   },
   "devDependencies": {
-    "eslint-config-trails": "latest",
-    "eslint": "^1.10",
+    "eslint": "^2.0.0-beta.1",
+    "eslint-config-trails": "^1.0.1",
     "mocha": "^2.3"
   },
   "bundledDependencies": [
