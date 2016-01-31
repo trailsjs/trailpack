@@ -1,6 +1,5 @@
 'use strict'
 
-const assert = require('assert')
 const TrailsApp = require('trails')
 
 before(() => {

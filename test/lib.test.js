@@ -5,7 +5,6 @@ const lib = require('../lib')
 const _ = require('lodash')
 
 describe('lib.util', () => {
-  let appA, appB
   const pack = {
     api: {
       services: {
@@ -19,16 +18,21 @@ describe('lib.util', () => {
     }
   }
   describe('#mergeApplication', () => {
+    let appA, appB
     beforeEach(() => {
       appA = {
         api: {
-          services: { },
+          services: {
+            ExtantService: class ExtantService {
+              testMethod () { }
+            }
+          },
           models: { },
           controllers: { },
           policies: { }
         }
       }
-      appA = {
+      appB = {
         api: {
           services: {
             OverrideService: class OverrideService {
@@ -43,12 +47,17 @@ describe('lib.util', () => {
     })
 
     it('should correctly merge Service classes into the api.services namespace', () => {
-      const mergedApp = lib.Util.mergeApplication(app, pack)
+      const mergedApp = lib.Util.mergeApplication(appA, pack)
       assert(_.isFunction(mergedApp.api.services.TestService))
     })
 
+    it('should not clobber any existing services in api.services namespace', () => {
+      const mergedApp = lib.Util.mergeApplication(appA, pack)
+      assert(_.isFunction(mergedApp.api.services.ExtantService))
+    })
+
     it('should override extant Service class if there is naming conflict', () => {
-      const mergedApp = lib.Util.mergeApplication(app, pack)
+      const mergedApp = lib.Util.mergeApplication(appB, pack)
       assert(_.isFunction(mergedApp.api.services.OverrideService))
       assert(mergedApp.api.services.OverrideService.prototype.testMethodOverride)
       assert(!mergedApp.api.services.OverrideService.prototype.testMethod)
