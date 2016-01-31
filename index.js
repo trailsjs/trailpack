@@ -113,5 +113,12 @@ module.exports = class Trailpack {
       })
     })
   }
+
+  /**
+   * Expose the application's logger directly on the Trailpack for convenience.
+   */
+  get log () {
+    return this.app.log
+  }
 }
 

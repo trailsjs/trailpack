@@ -38,5 +38,12 @@ describe('Trailpack', () => {
         */
     })
   })
+
+  describe('#log', () => {
+    it('should work', () => {
+      const pack = new TestPack(global.app)
+      pack.log.debug('hello')
+    })
+  })
 })
 
