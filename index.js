@@ -34,7 +34,7 @@ module.exports = class Trailpack {
     this.config = lib.Util.mergeDefaultTrailpackConfig(pack.config.trailpack, defaultConfig)
 
     lib.Util.mergeEnvironmentConfig(pack.config, pack.config.env)
-    lib.Util.mergeApplication(this.app.api, pack.api)
+    lib.Util.mergeApplication(this.app, pack)
     lib.Util.mergeApplicationConfig(this.app.config, pack.config)
 
     this.app.emit(`trailpack:${this.name}:constructed`)
