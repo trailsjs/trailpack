@@ -38,7 +38,7 @@
     "extends": "trails"
   },
   "devDependencies": {
-    "eslint-config-trails": "^1.0.1",
+    "eslint-config-trails": "^1.0.3",
     "mocha": "^2.3.4",
     "smokesignals": "1.0.2",
     "trails": "0.0.24"
