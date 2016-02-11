@@ -1,5 +1,6 @@
 'use strict'
 
+const events = require('events')
 const lib = require('./lib')
 const defaultConfig = require('./config')
 
@@ -7,7 +8,7 @@ const defaultConfig = require('./config')
  * @class Trailpack
  * @see {@link http://trailsjs.io/doc/trailpack}
  */
-module.exports = class Trailpack {
+module.exports = class Trailpack extends events.EventEmitter {
 
   /**
    * @constructor
@@ -22,6 +23,8 @@ module.exports = class Trailpack {
    * constructor is not recommended.
    */
   constructor (app, pack) {
+    super()
+
     if (!pack.pkg) {
       throw new Error('Trailpack is missing package definition ("pack.pkg")')
     }
@@ -38,17 +41,6 @@ module.exports = class Trailpack {
     lib.Util.mergeApplicationConfig(this.app, pack)
 
     this.app.emit(`trailpack:${this.name}:constructed`)
-  }
-
-  /**
-   * Return the name of this Trailpack. By default, this is the name of the
-   * npm module (in package.json). This method can be overridden for trailpacks
-   * which do not follow the "trailpack-" prefix naming convention.
-   *
-   * @return String
-   */
-  get name () {
-    return this.pkg.name.replace(/trailpack\-/, '')
   }
 
   /**
@@ -114,11 +106,27 @@ module.exports = class Trailpack {
     })
   }
 
+  emit () {
+    return this.app.emit.apply(this.app, arguments)
+  }
+
   /**
    * Expose the application's logger directly on the Trailpack for convenience.
    */
   get log () {
     return this.app.log
   }
+
+  /**
+   * Return the name of this Trailpack. By default, this is the name of the
+   * npm module (in package.json). This method can be overridden for trailpacks
+   * which do not follow the "trailpack-" prefix naming convention.
+   *
+   * @return String
+   */
+  get name () {
+    return this.pkg.name.replace(/trailpack\-/, '')
+  }
+
 }
 
