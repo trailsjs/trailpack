@@ -16,7 +16,7 @@ $ npm install --save <%= name %>
 ## Configure
 
 ```js
-// config/trailpack.js
+// config/main.js
 module.exports = {
   packs: [
     // ... other trailpacks
