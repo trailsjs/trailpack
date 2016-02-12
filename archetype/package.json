@@ -15,9 +15,6 @@
     "eslint-config-trails": "^1.0.1",
     "mocha": "^2.3"
   },
-  "bundledDependencies": [
-    "trailpack"
-  ],
   "scripts": {
     "test": "eslint . && mocha"
   },
