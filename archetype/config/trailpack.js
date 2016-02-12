@@ -4,18 +4,6 @@
  * @see {@link http://trailsjs.io/doc/trailpack/config
  */
 module.exports = {
-
-  /**
-   * API and config resources provided by this Trailpack.
-   */
-  provides: {
-    api: {
-      controllers: [ ]
-      // ...
-    },
-    config: [ ]
-  },
-
   /**
    * Configure the lifecycle of this pack; that is, how it boots up, and which
    * order it loads relative to other trailpacks.
@@ -39,3 +27,4 @@ module.exports = {
     }
   }
 }
+
