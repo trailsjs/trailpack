@@ -32,7 +32,11 @@ module.exports = class Trailpack extends events.EventEmitter {
       pack.config = { }
     }
 
-    this.app = app
+    Object.defineProperty(this, 'app', {
+      enumberable: false,
+      value: app
+    })
+
     this.pkg = pack.pkg
     this.config = lib.Util.mergeDefaultTrailpackConfig(pack.config.trailpack, defaultConfig)
 
