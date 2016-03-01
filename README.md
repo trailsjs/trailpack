@@ -17,10 +17,11 @@ This module is a class which should be extended by all trailpacks.
 
 See [`archetype/index.js`](https://github.com/trailsjs/trailpack/blob/master/archetype/index.js)
 for more details.
+
 ```js
 const Trailpack = require('trailpack')
 
-class HipsterMagic extends Trailpack {
+class ExampleTrailpack extends Trailpack {
   constructor (app) {
     super(app, {
       config: require('./config'),
@@ -29,7 +30,17 @@ class HipsterMagic extends Trailpack {
     })
   }
 
-  // ...
+  validate () {
+    if (!this.app.config.example) throw new Error('config.example not set!')
+  }
+
+  configure () {
+    this.app.config.example.happy = true
+  }
+
+  initialize () {
+    setInterval(() => this.log.debug('happy?', this.app.config.example.happy), 1000)
+  }
 }
 ```
 
@@ -48,7 +59,6 @@ module.exports = {
     // ...
   }
 }
-
 ```
 
 ## Lifecycle

@@ -8,6 +8,7 @@ const App = {
   config: {
     main: {
       packs: [
+        smokesignals.Trailpack
       ],
       paths: {
         root: __dirname
