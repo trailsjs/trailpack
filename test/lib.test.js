@@ -72,7 +72,7 @@ describe('lib.util', () => {
     })
   })
   describe('#mergeApplicationConfig', () => {
-    let appA, mergedConfig
+    let mergedConfig
     const pack = {
       config: {
         sectionA: {
@@ -95,7 +95,7 @@ describe('lib.util', () => {
       }
     }
     beforeEach(() => {
-      appA = {
+      const appA = {
         log: new smokesignals.Logger('error'),
         config: {
           sectionA: {
