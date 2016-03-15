@@ -19,7 +19,7 @@ module.exports = _.defaultsDeep({
         require('trailpack-core'),
         require('../')
       ]
-    },
+    }
   }
 }, smokesignals.FailsafeConfig)
 
