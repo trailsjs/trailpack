@@ -1,5 +1,4 @@
 {
-  "name": "trailpack-archetype",
   "version": "0.0.0",
   "main": "index.js",
   "keywords": [
@@ -11,9 +10,11 @@
     "trailpack": "latest"
   },
   "devDependencies": {
-    "eslint": "^2.0.0-beta.1",
+    "eslint": "^2.4",
     "eslint-config-trails": "^1.0.1",
-    "mocha": "^2.3"
+    "mocha": "^2.3",
+    "smokesignals": "^1.0.2",
+    "trailpack-core": "^1.0.0-beta-3"
   },
   "scripts": {
     "test": "eslint . && mocha"

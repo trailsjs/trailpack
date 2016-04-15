@@ -53,7 +53,7 @@ module.exports = class Trailpack extends events.EventEmitter {
    * preconditions.
    */
   validate () {
-    return Promise.resolve()
+
   }
 
   /**
@@ -62,7 +62,7 @@ module.exports = class Trailpack extends events.EventEmitter {
    * configuration, should override this method.
    */
   configure () {
-    return Promise.resolve()
+
   }
 
   /**
@@ -70,44 +70,15 @@ module.exports = class Trailpack extends events.EventEmitter {
    * run daemon-like services should override this method.
    */
   initialize () {
-    return Promise.resolve()
+
   }
 
   /**
    * Unload this Trailpack. This method will instruct the trailpack to perform
-   * any necessary cleanup with the expectation that it will be expunged
-   * soon thereafter, or that it is about to be reloaded.
+   * any necessary cleanup with the expectation that the app will stop or reload
+   * soon thereafter.
    */
   unload () {
-    return Promise.resolve()
-  }
-
-  /**
-   * Expunge this Trailpack. This will remove the pack from the application's
-   * pack map (app.packs) as well as from the Node module cache
-   * (require.cache).
-   *
-   * This is, for all but the most hackish purposes, irreversible. As such, you
-   * should only call this method if you're pretty sure you won't need to
-   * reload the module. Calling require() during runtime while requests are
-   * being processed is not a good idea. require() is synchronous, and will
-   * clog up the event loop. If you want to reload the module again at some
-   * point during runtime, call unload() instead.
-   *
-   */
-  expunge () {
-    return new Promise((resolve, reject) => {
-      process.nextTick(() => {
-        const result = lib.Util.expungeModule(this.pkg.name, this.app.config.main.paths.root)
-        if (result === true) {
-          resolve()
-          this.app.emit(`trailpack:${this.name}:unloaded`)
-        }
-        else {
-          reject(result)
-        }
-      })
-    })
   }
 
   emit () {
@@ -131,6 +102,5 @@ module.exports = class Trailpack extends events.EventEmitter {
   get name () {
     return this.pkg.name.replace(/trailpack\-/, '')
   }
-
 }
 
