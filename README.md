@@ -6,9 +6,9 @@
 [![Dependency Status][daviddm-image]][daviddm-url]
 [![Code Climate][codeclimate-image]][codeclimate-url]
 
-Trailpack Interface. Trailpacks extend the functionality of the Trails
+Trailpack Interface. Trailpacks extend the capability of the Trails
 framework. (**Application functionality** should be extended using
-[Microservices](https://github.com/trailsjs/trailpack-microservices)).
+Services).
 
 ## Usage
 This module is a class which should be extended by all trailpacks.
@@ -51,17 +51,17 @@ for more details.
 ```js
 // config/trailpack.js
 module.exports = {
-  provides: {
-    // ...
-  },
-
+  type: 'misc',
   lifecycle: {
-    // ...
+    configure: [ ],
+    initialize: [ ]
   }
 }
 ```
 
-## Lifecycle
+## API
+
+### Boot Lifecycle
 
 0. `app.start`
 1. Validate
@@ -69,7 +69,51 @@ module.exports = {
 3. Initialize
 4. `app.ready`
 
-## API
+### Types
+
+#### `abstract`
+An abstract trailpack is designed to provide an interface for a particular
+kind of trailpack, and are not included directly.
+
+#### `system`
+These trailpacks provide critical framework-level functionality that most/all
+other trailpacks will depend on, such as [`core`](https://github.com/trailsjs/trailpack-core)
+and [`router`](https://github.com/trailsjs/trailpack-router).
+
+#### `server`
+These allow you to use various node.js web server frameworks with Trails, such
+as [`express`](https://github.com/trailsjs/trailpack-express4),
+[`hapi`](https://github.com/trailsjs/trailpack-hapi),
+and [`koa`](https://github.com/trailsjs/trailpack-koa). Typically, only one
+server pack will be installed in a Trails Application.
+
+#### `datastore`
+Datastore trailpacks provide a unified way to configure various persistence
+stores. These may be ORMs, query builders, or database drives. Examples include
+[`knex`](https://github.com/trailsjs/trailpack-knex), [`graphql`](https://github.com/trailsjs/trailpack-graphql)
+and [`waterline`](https://github.com/trailsjs/trailpack-waterline). Typically,
+only one datastore pack will be installed in a Trails Application.
+
+#### `tools`
+Every application needs a suite of tools for development, debugging,
+monitoring, etc. These trailpacks integrate various modules with Trails
+to provide a richer developer experience. Some tool packs include
+[`autoreload`](https://github.com/trailsjs/trailpack-autoreload), [`webpack`](https://github.com/trailsjs/trailpack-webpack),
+[`repl`](https://github.com/trailsjs/trailpack-repl). Trails Application logic
+will typically not rely on these trailpacks directly.
+
+#### `extensions`
+Extension packs exist to augment, or extend, the functionality of other
+trailpacks or existing framework logic.
+For example, [`footprints`](https://github.com/trailsjs/trailpack-footprints)
+provides a standard interface between `server` and `datastore` trailpacks.
+[`realtime`](https://github.com/trailsjs/trailpack-realtime) adds additional
+functionality to a server. [`sails`](https://github.com/trailsjs/trailpack-sails)
+lets you plugin an entire sails project directly into a Trails Application.
+[`bootstrap`](https://github.com/trailsjs/trailpack-bootstrap) extends the Trails
+boot process so that a custom method can be run during application startup.
+
+### Methods
 
 #### `constructor(app, definition)`
 Instantiate the Trailpack. `definition` is an object which contains three
