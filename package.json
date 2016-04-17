@@ -23,6 +23,10 @@
     {
       "name": "Travis Webb",
       "url": "https://github.com/tjwebb"
+    },
+    {
+      "name": "Aumard Jimmy",
+      "url": "https://github.com/jaumard"
     }
   ],
   "license": "MIT",
@@ -31,16 +35,16 @@
   },
   "homepage": "https://github.com/trailsjs/trailpack#readme",
   "dependencies": {
-    "lodash": "^4.2.0"
+    "lodash": "^4.5.1"
   },
   "eslintConfig": {
     "extends": "trails"
   },
   "devDependencies": {
-    "eslint": "^2.0.0-beta.3",
-    "eslint-config-trails": "^1.0.1",
-    "mocha": "^2.3.4",
-    "smokesignals": "^1.0.2",
-    "trails": "^1.0.0-alpha-1"
+    "eslint": "^2.2.0",
+    "eslint-config-trails": "^1.0.4",
+    "mocha": "^2.4.5",
+    "trails": "1.0.0-beta-1",
+    "smokesignals": "^1.0.2"
   }
 }
