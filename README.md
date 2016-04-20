@@ -127,14 +127,16 @@ example, if this trailpack requires that a database is configured in
 no side-effects. *Do not alter any extant configuration.*
 
 #### `configure()`
-Extend the configuration (`config/`, or `app.config`) of the application, or
-add new configuration objects. This method is run before the application
-has loaded. You can alter application configuration here.
+Alter/Extend the configuration (`app.config`) of the application, or
+add new sections to the config object for the trailpack. This method 
+is run before the application is loaded -- after validate, and before 
+initialize. Trails does not allow further configuration changes after
+this lifecycle stage is complete.
 
 #### `initialize()`
 If you need to bind any event listeners, start servers, connect to databases,
-all of that should be done in initialize. Here, all of the configuration is
-loaded and finalized.
+all of that should be done in initialize. The app's configuration is guaranteed to be
+loaded and finalized before this stage.
 
 ## Contributing
 We love contributions! Please see our [Contribution Guide](https://github.com/trailsjs/trails/blob/master/CONTRIBUTING.md)
