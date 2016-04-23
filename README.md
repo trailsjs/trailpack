@@ -143,6 +143,8 @@ for more information.
 ## License
 [MIT](https://github.com/trailsjs/trailpack/blob/master/LICENSE)
 
+<img src="http://i.imgur.com/dCjNisP.png">
+
 [npm-image]: https://img.shields.io/npm/v/trailpack.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/trailpack
 [ci-image]: https://img.shields.io/travis/trailsjs/trailpack/master.svg?style=flat-square
