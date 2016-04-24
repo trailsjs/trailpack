@@ -90,6 +90,18 @@ module.exports = class Trailpack {
     return this.app.emit.apply(this.app, arguments)
   }
 
+  once () {
+    return this.app.once.apply(this.app, arguments)
+  }
+
+  on () {
+    return this.app.once.apply(this.app, arguments)
+  }
+
+  after () {
+    return this.app.after.apply(this.app, arguments)
+  }
+
   /**
    * Expose the application's logger directly on the Trailpack for convenience.
    */
