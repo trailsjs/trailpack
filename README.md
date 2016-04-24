@@ -113,6 +113,9 @@ lets you plugin an entire sails project directly into a Trails Application.
 [`bootstrap`](https://github.com/trailsjs/trailpack-bootstrap) extends the Trails
 boot process so that a custom method can be run during application startup.
 
+#### `misc`
+Every trailpacks that doesn't fit previous types.
+
 ### Methods
 
 #### `constructor(app, definition)`
