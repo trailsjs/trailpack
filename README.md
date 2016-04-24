@@ -139,7 +139,7 @@ all of that should be done in initialize. The app's configuration is guaranteed 
 loaded and finalized before this stage.
 
 ## Contributing
-We love contributions! Please see our [Contribution Guide](https://github.com/trailsjs/trails/blob/master/CONTRIBUTING.md)
+We love contributions! Please see our [Contribution Guide](https://github.com/trailsjs/trails/blob/master/.github/CONTRIBUTING.md)
 for more information.
 
 ## License
