@@ -119,6 +119,8 @@ and other system tools to cleanly release resources in order to
 shutdown/restart the Trails application.
 
 ### Types
+The trailpack `type` is used to distinguish between Trailpacks by the role they 
+perform in the application. It is also used by developer tools such as [Trailmix](https://github.com/trailsjs/trailsmix)
 
 #### `abstract`
 An abstract trailpack is designed to provide an interface for a particular
@@ -161,6 +163,9 @@ functionality to a server. [`sails`](https://github.com/trailsjs/trailpack-sails
 lets you plugin an entire sails project directly into a Trails Application.
 [`bootstrap`](https://github.com/trailsjs/trailpack-bootstrap) extends the Trails
 boot process so that a custom method can be run during application startup.
+
+#### `misc`
+All trailpacks that don't fit previous types.
 
 ## Contributing
 We love contributions! Please see our [Contribution Guide](https://github.com/trailsjs/trails/blob/master/.github/CONTRIBUTING.md)
