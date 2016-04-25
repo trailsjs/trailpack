@@ -39,7 +39,13 @@ class ExampleTrailpack extends Trailpack {
   }
 
   initialize () {
-    setInterval(() => this.log.debug('happy?', this.app.config.example.happy), 1000)
+    this.interval = setInterval(() => {
+      this.log.debug('happy?', this.app.config.example.happy)
+    }, 1000)
+  }
+
+  unload () {
+    clearInterval(this.interval)
   }
 }
 ```
@@ -63,11 +69,54 @@ module.exports = {
 
 ### Boot Lifecycle
 
-0. `app.start`
-1. Validate
-2. Configure
-3. Initialize
-4. `app.ready`
+0. [`trails:start`](https://github.com/trailsjs/trails/blob/master/index.js#L72) (event)
+1. [`validate()`](https://github.com/trailsjs/trailpack/blob/master/index.js#L54-L61)
+2. [`configure()`](https://github.com/trailsjs/trailpack/blob/master/index.js#L63-L70)
+3. [`initialize()`](https://github.com/trailsjs/trailpack/blob/master/index.js#L72-L78)
+4. [`trails:ready`](https://github.com/trailsjs/trails/blob/master/lib/trailpack.js#L38)
+
+### Properties
+
+#### `log`
+Provides convenient access to the Trails logger. (e.g. `this.log.debug('hello')`)
+
+#### `packs`
+Access the application's loaded Trailpacks. This is a mapping of
+name -> Trailpack. (e.g. `this.packs.core`)
+
+#### `on`, `once`, `emit`, `after`
+Emit/Listen for events on the Trails EventEmitter. Convenience methods for
+`this.app.on`, `this.app.once`, etc. (e.g. `this.emit('custom:event')`)
+
+### Methods
+
+#### `constructor(app, definition)`
+Instantiate the Trailpack. `definition` is an object which contains three
+optional properties: `config`, `api`, `pkg`. Trailpack configuration is merged
+into the application configuration.
+
+#### `validate()`
+Validate the preconditions for proper functioning of this trailpack. For
+example, if this trailpack requires that a database is configured in
+`config/database.js`, this method should validate this. This method should incur
+no side-effects. *Do not alter any extant configuration.*
+
+#### `configure()`
+Alter/Extend the configuration (`app.config`) of the application, or
+add new sections to the config object for the trailpack. This method 
+is run before the application is loaded -- after validate, and before 
+initialize. Trails does not allow further configuration changes after
+this lifecycle stage is complete.
+
+#### `initialize()`
+If you need to bind any event listeners, start servers, connect to databases,
+all of that should be done in initialize. The app's configuration is guaranteed to be
+loaded and finalized before this stage.
+
+#### `unload()`
+Cleaup any resources/daemons started by this Trailpack. Used by [trailpack-autoreload](https://github.com/trailsjs/trailpack-autoreload)
+and other system tools to cleanly release resources in order to
+shutdown/restart the Trails application.
 
 ### Types
 
@@ -112,31 +161,6 @@ functionality to a server. [`sails`](https://github.com/trailsjs/trailpack-sails
 lets you plugin an entire sails project directly into a Trails Application.
 [`bootstrap`](https://github.com/trailsjs/trailpack-bootstrap) extends the Trails
 boot process so that a custom method can be run during application startup.
-
-### Methods
-
-#### `constructor(app, definition)`
-Instantiate the Trailpack. `definition` is an object which contains three
-optional properties: `config`, `api`, `pkg`. Trailpack configuration is merged
-into the application configuration.
-
-#### `validate()`
-Validate the preconditions for proper functioning of this trailpack. For
-example, if this trailpack requires that a database is configured in
-`config/database.js`, this method should validate this. This method should incur
-no side-effects. *Do not alter any extant configuration.*
-
-#### `configure()`
-Alter/Extend the configuration (`app.config`) of the application, or
-add new sections to the config object for the trailpack. This method 
-is run before the application is loaded -- after validate, and before 
-initialize. Trails does not allow further configuration changes after
-this lifecycle stage is complete.
-
-#### `initialize()`
-If you need to bind any event listeners, start servers, connect to databases,
-all of that should be done in initialize. The app's configuration is guaranteed to be
-loaded and finalized before this stage.
 
 ## Contributing
 We love contributions! Please see our [Contribution Guide](https://github.com/trailsjs/trails/blob/master/.github/CONTRIBUTING.md)

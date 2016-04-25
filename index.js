@@ -110,6 +110,13 @@ module.exports = class Trailpack {
   }
 
   /**
+   * Expose the application's packs directly on the Trailpack for convenience.
+   */
+  get packs () {
+    return this.app.packs
+  }
+
+  /**
    * Return the name of this Trailpack. By default, this is the name of the
    * npm module (in package.json). This method can be overridden for trailpacks
    * which do not follow the "trailpack-" prefix naming convention.
