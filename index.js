@@ -35,7 +35,7 @@ module.exports = class Trailpack {
         value: app
       },
       pkg: {
-        value: pack.pkg,
+        value: Object.freeze(pack.pkg),
         enumerable: false
       },
       config: {
