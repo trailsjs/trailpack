@@ -1,7 +1,7 @@
 'use strict'
 
 const assert = require('assert')
-const lib = require('../lib')
+const lib = require('../../lib')
 const _ = require('lodash')
 const smokesignals = require('smokesignals')
 
