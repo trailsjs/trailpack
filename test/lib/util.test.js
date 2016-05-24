@@ -151,11 +151,11 @@ describe('lib.util', () => {
   })
   describe('#mergeEnvironmentConfig', () => {
     it('should merge config environment', () => {
-        assert.equal(global.app.config.mypack.port, 8080)
-        assert.equal(global.app.config.mypack.added, 'ok')
-        assert.equal(global.app.config.mypack.nested.test3, 'test')
-        assert.equal(global.app.config.mypack.nested.test2, 'ok')
-      })
+      assert.equal(global.app.config.mypack.port, 8080)
+      assert.equal(global.app.config.mypack.added, 'ok')
+      assert.equal(global.app.config.mypack.nested.test3, 'test')
+      assert.equal(global.app.config.mypack.nested.test2, 'ok')
+    })
   })
 })
 
