@@ -1,6 +1,5 @@
 'use strict'
 
-const events = require('events')
 const lib = require('./lib')
 const defaultConfig = require('./config')
 
@@ -8,7 +7,7 @@ const defaultConfig = require('./config')
  * @class Trailpack
  * @see {@link http://trailsjs.io/doc/trailpack}
  */
-module.exports = class Trailpack extends events.EventEmitter {
+module.exports = class Trailpack {
 
   /**
    * @constructor
@@ -23,8 +22,6 @@ module.exports = class Trailpack extends events.EventEmitter {
    * constructor is not recommended.
    */
   constructor (app, pack) {
-    super()
-
     if (!pack.pkg) {
       throw new Error('Trailpack is missing package definition ("pack.pkg")')
     }
@@ -32,19 +29,27 @@ module.exports = class Trailpack extends events.EventEmitter {
       pack.config = { }
     }
 
-    Object.defineProperty(this, 'app', {
-      enumberable: false,
-      value: app
+    Object.defineProperties(this, {
+      app: {
+        enumberable: false,
+        value: app
+      },
+      pkg: {
+        value: Object.freeze(pack.pkg),
+        enumerable: false
+      },
+      config: {
+        value: lib.Util.mergeDefaultTrailpackConfig(pack.config.trailpack, defaultConfig),
+        enumerable: false
+      }
     })
 
-    this.pkg = pack.pkg
-    this.config = lib.Util.mergeDefaultTrailpackConfig(pack.config.trailpack, defaultConfig)
-
-    lib.Util.mergeEnvironmentConfig(pack.config, pack.config.env)
     lib.Util.mergeApplication(this.app, pack)
     lib.Util.mergeApplicationConfig(this.app, pack)
+    lib.Util.mergeEnvironmentConfig(pack.config, this.app.config)
 
-    this.app.emit(`trailpack:${this.name}:constructed`)
+    this.app.packs[this.name] = this
+    this.emit(`trailpack:${this.name}:constructed`)
   }
 
   /**
@@ -79,10 +84,23 @@ module.exports = class Trailpack extends events.EventEmitter {
    * soon thereafter.
    */
   unload () {
+
   }
 
   emit () {
     return this.app.emit.apply(this.app, arguments)
+  }
+
+  once () {
+    return this.app.once.apply(this.app, arguments)
+  }
+
+  on () {
+    return this.app.once.apply(this.app, arguments)
+  }
+
+  after () {
+    return this.app.after.apply(this.app, arguments)
   }
 
   /**
@@ -90,6 +108,13 @@ module.exports = class Trailpack extends events.EventEmitter {
    */
   get log () {
     return this.app.log
+  }
+
+  /**
+   * Expose the application's packs directly on the Trailpack for convenience.
+   */
+  get packs () {
+    return this.app.packs
   }
 
   /**
