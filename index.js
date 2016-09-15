@@ -96,7 +96,7 @@ module.exports = class Trailpack {
   }
 
   on () {
-    return this.app.once.apply(this.app, arguments)
+    return this.app.on.apply(this.app, arguments)
   }
 
   after () {
@@ -128,4 +128,3 @@ module.exports = class Trailpack {
     return this.pkg.name.replace(/trailpack\-/, '')
   }
 }
-
