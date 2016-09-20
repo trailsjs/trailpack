@@ -34,6 +34,11 @@ const App = {
       }
     },
     main: {
+      packsConfig: {
+        'trailpack-test': {
+          testattr: 'testvalue'
+        }
+      },
       packs: [
         smokesignals.Trailpack,
         require('./pack')
