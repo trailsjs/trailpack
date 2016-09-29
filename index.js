@@ -28,6 +28,9 @@ module.exports = class Trailpack {
     if (!pack.config) {
       pack.config = { }
     }
+    if (!pack.config.trailpack) {
+      pack.config.trailpack = { }
+    }
 
     Object.defineProperties(this, {
       app: {

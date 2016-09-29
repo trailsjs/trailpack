@@ -35,8 +35,12 @@ const App = {
     },
     main: {
       packsConfig: {
-        'trailpack-test': {
-          testattr: 'testvalue'
+        'trailpack-testpack': {
+          lifecycle: {
+            initialize: {
+              emit: ['trailpack:testpack:custom']
+            }
+          }
         }
       },
       packs: [
