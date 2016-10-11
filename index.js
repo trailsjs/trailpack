@@ -26,11 +26,56 @@ module.exports = class Trailpack {
       throw new Error('Trailpack is missing package definition ("pack.pkg")')
     }
     if (!pack.config) {
-      pack.config = { }
+      throw new Error('[' + pack.pkg.name + '] ' +
+          'Trailpack is missing package configuration ("pack.config")')
     }
     if (!pack.config.trailpack) {
-      pack.config.trailpack = { }
+      throw new Error('[' + pack.pkg.name + '] ' +
+          'Trailpack is missing configuration ("pack.config.trailpack")')
     }
+    if (!pack.config.trailpack.lifecycle
+        || typeof pack.config.trailpack.lifecycle !== 'object' ) {
+      throw new Error('[' + pack.pkg.name + '] ' +
+          'Trailpack lifecycle configuration should be an object ' +
+          '("pack.config.trailpack.lifecycle")')
+    }
+    if (!pack.config.trailpack.lifecycle.configure
+        || typeof pack.config.trailpack.lifecycle.configure !== 'object' ) {
+      throw new Error('[' + pack.pkg.name + '] ' +
+          'Trailpack lifecycle configuration should be an object ' +
+          '("pack.config.trailpack.lifecycle.configure")')
+    }
+    if (!pack.config.trailpack.lifecycle.configure.listen
+        || !Array.isArray(pack.config.trailpack.lifecycle.configure.listen) ) {
+      throw new Error('[' + pack.pkg.name + '] ' +
+          'Trailpack lifecycle configuration listeners should be an array ' +
+          '("pack.config.trailpack.lifecycle.configure.listen")')
+    }
+    if (!pack.config.trailpack.lifecycle.configure.emit
+        || !Array.isArray(pack.config.trailpack.lifecycle.configure.emit)) {
+      throw new Error('[' + pack.pkg.name + '] ' +
+          'Trailpack lifecycle configuration emitters should be an array ' +
+          '("pack.config.trailpack.lifecycle.configure.emit")')
+    }
+    if (!pack.config.trailpack.lifecycle.initialize
+        || typeof pack.config.trailpack.lifecycle.initialize !== 'object' ) {
+      throw new Error('[' + pack.pkg.name + '] ' +
+          'Trailpack lifecycle initialize should be an object ' +
+          '("pack.config.trailpack.lifecycle.initialize")')
+    }
+    if (!pack.config.trailpack.lifecycle.initialize.listen
+        || !Array.isArray(pack.config.trailpack.lifecycle.initialize.listen) ) {
+      throw new Error('[' + pack.pkg.name + '] ' +
+          'Trailpack lifecycle initialize listeners should be an array ' +
+          '("pack.config.trailpack.lifecycle.initialize.listen")')
+    }
+    if (!pack.config.trailpack.lifecycle.initialize.emit
+        || !Array.isArray(pack.config.trailpack.lifecycle.initialize.emit) ) {
+      throw new Error('[' + pack.pkg.name + '] ' +
+          'Trailpack lifecycle initialize emitters should be an array ' +
+          '("pack.config.trailpack.lifecycle.initialize.emit")')
+    }
+
 
     Object.defineProperties(this, {
       app: {
