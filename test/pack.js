@@ -9,7 +9,19 @@ module.exports = class TestPack extends Trailpack {
         name: 'trailpack-testpack'
       },
       config: {
-        mypack: {}
+        mypack: {},
+        trailpack: {
+          lifecycle: {
+            configure: {
+              listen: [],
+              emit: []
+            },
+            initialize: {
+              listen: [],
+              emit: []
+            }
+          }
+        }
       }
     })
   }

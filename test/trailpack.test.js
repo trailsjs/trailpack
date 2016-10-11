@@ -15,6 +15,12 @@ describe('Trailpack', () => {
       global.app.after('trailpack:testpack:constructed').then(() => done() )
       new TestPack(global.app)
     })
+    it('should override the trailpack config', () => {
+      global.app.after('trailpack:testpack:constructed').then(() => {
+        assert.equal(pack.config.lifecycle.initialize.emit[0], 'trailpack:testpack:custom')
+      })
+      const pack = new TestPack(global.app)
+    })
   })
 
   describe('#name', () => {
@@ -45,5 +51,6 @@ describe('Trailpack', () => {
       pack.log.debug('hello')
     })
   })
+
 })
 

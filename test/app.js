@@ -34,6 +34,15 @@ const App = {
       }
     },
     main: {
+      packsConfig: {
+        'trailpack-testpack': {
+          lifecycle: {
+            initialize: {
+              emit: ['trailpack:testpack:custom']
+            }
+          }
+        }
+      },
       packs: [
         smokesignals.Trailpack,
         require('./pack')
