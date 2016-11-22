@@ -46,7 +46,6 @@ module.exports = class Trailpack {
       }
     })
 
-    lib.Util.mergeEnvironmentConfig(pack.config, pack.config.env)
     lib.Util.mergeApplication(this.app, pack)
     lib.Util.mergeApplicationConfig(this.app, pack)
 
@@ -98,7 +97,7 @@ module.exports = class Trailpack {
   }
 
   on () {
-    return this.app.once.apply(this.app, arguments)
+    return this.app.on.apply(this.app, arguments)
   }
 
   after () {
@@ -130,4 +129,3 @@ module.exports = class Trailpack {
     return this.pkg.name.replace(/trailpack\-/, '')
   }
 }
-

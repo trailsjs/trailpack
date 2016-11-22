@@ -7,6 +7,9 @@ module.exports = class TestPack extends Trailpack {
     super(app, {
       pkg: {
         name: 'trailpack-testpack'
+      },
+      config: {
+        mypack: {}
       }
     })
   }

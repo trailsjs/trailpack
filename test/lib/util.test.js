@@ -12,15 +12,17 @@ describe('lib.util', () => {
       api: {
         services: {
           TestService: class TestService {
-            testMethod () { }
+            testMethod() {
+            }
           },
           OverrideService: class OverrideService {
-            testMethodOverride () { }
+            testMethodOverride() {
+            }
           }
         },
-        models: { },
-        controllers: { },
-        policies: { }
+        models: {},
+        controllers: {},
+        policies: {}
       }
     }
     beforeEach(() => {
@@ -28,12 +30,13 @@ describe('lib.util', () => {
         api: {
           services: {
             ExtantService: class ExtantService {
-              testMethod () { }
+              testMethod() {
+              }
             }
           },
-          models: { },
-          controllers: { },
-          policies: { }
+          models: {},
+          controllers: {},
+          policies: {}
         },
         log: new smokesignals.Logger('error')
       }
@@ -41,12 +44,13 @@ describe('lib.util', () => {
         api: {
           services: {
             OverrideService: class OverrideService {
-              testMethod () { }
+              testMethod() {
+              }
             }
           },
-          models: { },
-          controllers: { },
-          policies: { }
+          models: {},
+          controllers: {},
+          policies: {}
         },
         log: new smokesignals.Logger('error')
       }
@@ -76,7 +80,7 @@ describe('lib.util', () => {
     const pack = {
       config: {
         sectionA: {
-          arrayConfig: [ 1, 2, 3, 4, 5, 6 ],
+          arrayConfig: [1, 2, 3, 4, 5, 6],
           foo: 'topLevelPackSetting',
           subsection: {
             bar: 'nestedPackSetting',
@@ -85,12 +89,12 @@ describe('lib.util', () => {
         },
         sectionB: {
           arrayConfig: [
-            { a: 1 },
-            { b: 2 }
+            {a: 1},
+            {b: 2}
           ]
         },
         sectionC: {
-          arrayTypeConflict: { a: 1 }
+          arrayTypeConflict: {a: 1}
         }
       }
     }
@@ -99,7 +103,7 @@ describe('lib.util', () => {
         log: new smokesignals.Logger('error'),
         config: {
           sectionA: {
-            arrayConfig: [ 1, 2, 3 ],
+            arrayConfig: [1, 2, 3],
             foo: 'topLevelAppSetting',
             subsection: {
               bar: 'nestedAppSetting',
@@ -108,12 +112,12 @@ describe('lib.util', () => {
           },
           sectionB: {
             arrayConfig: [
-              { a: 3 },
-              { b: 4 }
+              {a: 3},
+              {b: 4}
             ]
           },
           sectionC: {
-            arrayTypeConflict: [ 1, 2, 3 ]
+            arrayTypeConflict: [1, 2, 3]
           }
         }
       }
