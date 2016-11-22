@@ -32,10 +32,12 @@ module.exports = class Trailpack {
     Object.defineProperties(this, {
       app: {
         enumberable: false,
+        writable: false,
         value: app
       },
       pkg: {
         value: Object.freeze(pack.pkg),
+        writable: false,
         enumerable: false
       },
       config: {
