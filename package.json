@@ -43,7 +43,7 @@
     "eslint": "^2.5",
     "eslint-config-trails": "^2",
     "mocha": "^2.5",
-    "trails": "^2",
+    "trails": "v2-dev",
     "smokesignals": "^2"
   },
   "engines": {
