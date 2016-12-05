@@ -36,9 +36,6 @@
   "dependencies": {
     "lodash": "^4.13.1"
   },
-  "eslintConfig": {
-    "extends": "trails"
-  },
   "devDependencies": {
     "eslint": "^2.5",
     "eslint-config-trails": "^2",
@@ -48,5 +45,11 @@
   },
   "engines": {
     "node": ">= 4.0.0"
+  },
+  "eslintConfig": {
+    "extends": "trails"
+  },
+  "publishConfig": {
+    "tag": "next"
   }
 }
