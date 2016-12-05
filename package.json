@@ -34,7 +34,9 @@
   },
   "homepage": "https://github.com/trailsjs/trailpack#readme",
   "dependencies": {
-    "lodash": "^4.13.1"
+    "lodash": "^4.13.1",
+    "trailpack-datastore": "^1.0.2",
+    "trailpack-webserver": "^1.0.4"
   },
   "devDependencies": {
     "eslint": "^2.5",

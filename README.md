@@ -122,10 +122,6 @@ shutdown/restart the Trails application.
 The trailpack `type` is used to distinguish between Trailpacks by the role they 
 perform in the application. It is also used by developer tools such as [Trailmix](https://github.com/trailsjs/trailsmix)
 
-#### `abstract`
-An abstract trailpack is designed to provide an interface for a particular
-kind of trailpack, and are not included directly.
-
 #### `system`
 These trailpacks provide critical framework-level functionality that most/all
 other trailpacks will depend on, such as [`core`](https://github.com/trailsjs/trailpack-core)
@@ -145,7 +141,7 @@ stores. These may be ORMs, query builders, or database drives. Examples include
 and [`waterline`](https://github.com/trailsjs/trailpack-waterline). Typically,
 only one datastore pack will be installed in a Trails Application.
 
-#### `tools`
+#### `tool`
 Every application needs a suite of tools for development, debugging,
 monitoring, etc. These trailpacks integrate various modules with Trails
 to provide a richer developer experience. Some tool packs include
@@ -153,7 +149,7 @@ to provide a richer developer experience. Some tool packs include
 [`repl`](https://github.com/trailsjs/trailpack-repl). Trails Application logic
 will typically not rely on these trailpacks directly.
 
-#### `extensions`
+#### `extension`
 Extension packs exist to augment, or extend, the functionality of other
 trailpacks or existing framework logic.
 For example, [`footprints`](https://github.com/trailsjs/trailpack-footprints)
