@@ -1,7 +1,7 @@
 {
   "name": "trailpack",
   "version": "2.0.2",
-  "description": "Trailpack Interface. Trailpacks extend the functionality of the Trails framework.",
+  "description": "Trailpacks extend the functionality of the Trails framework.",
   "main": "index.js",
   "scripts": {
     "test": "eslint index.js lib/ test/ && mocha"
@@ -15,7 +15,8 @@
     "trailsjs",
     "trailpack",
     "plugin",
-    "addon"
+    "addon",
+    "module"
   ],
   "author": "Trails.js Team <hello@trailsjs.io>",
   "contributors": [
@@ -34,7 +35,7 @@
   },
   "homepage": "https://github.com/trailsjs/trailpack#readme",
   "dependencies": {
-    "lodash": "^4.13.1",
+    "lodash": "^4.17.2",
     "trailpack-datastore": "^1.0.2",
     "trailpack-webserver": "^1.0.4"
   },
