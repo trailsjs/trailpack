@@ -1,0 +1,1 @@
+exports.DatastoreService = require('./DatastoreService')
