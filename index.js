@@ -1,7 +1,6 @@
 'use strict'
 
 const EventEmitter = require('events').EventEmitter
-const _ = require('lodash')
 const lib = require('./lib')
 const defaultConfig = require('./config')
 
@@ -33,8 +32,6 @@ module.exports = class Trailpack {
     app.packs || (app.packs = { })
     pack.config || (pack.config = { })
     pack.api || (pack.api = { })
-
-    _.merge(pack.api, require('./api'))
 
     Object.defineProperties(this, {
       app: {

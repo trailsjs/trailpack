@@ -1,1 +1,0 @@
-exports.services = require('./services')

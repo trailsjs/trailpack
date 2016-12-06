@@ -29,13 +29,6 @@ describe('Trailpack', () => {
       app.once('trailpack:testpack:constructed', done)
       new TestPack(app)
     })
-    it('should merge default API interfaces into the app', () => {
-      new TestPack(app)
-      const DatastoreService = app.api.services.DatastoreService
-
-      assert(DatastoreService)
-      //assert.throws(DatastoreService.select, Error)
-    })
   })
 
   describe('#name', () => {
