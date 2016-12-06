@@ -1,5 +1,6 @@
 'use strict'
 
+const _ = require('lodash')
 const lib = require('./lib')
 const defaultConfig = require('./config')
 
@@ -28,6 +29,11 @@ module.exports = class Trailpack {
     if (!pack.config) {
       pack.config = { }
     }
+    if (!pack.api) {
+      pack.api = { }
+    }
+
+    _.merge(pack.api, require('./api'))
 
     Object.defineProperties(this, {
       app: {
@@ -82,7 +88,9 @@ module.exports = class Trailpack {
   /**
    * Unload this Trailpack. This method will instruct the trailpack to perform
    * any necessary cleanup with the expectation that the app will stop or reload
-   * soon thereafter.
+   * soon thereafter. If your trailpack runs a daemon or any other thing that may
+   * occupy the event loop, implementing this method is important for Trails to
+   * exit correctly.
    */
   unload () {
 

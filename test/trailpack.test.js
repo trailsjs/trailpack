@@ -12,8 +12,14 @@ describe('Trailpack', () => {
       assert(pack)
     })
     it('should emit "constructed" event', done => {
-      global.app.after('trailpack:testpack:constructed').then(() => done() )
+      global.app.after('trailpack:testpack:constructed').then(() => done())
       new TestPack(global.app)
+    })
+    it('should merge default API interfaces into the app', () => {
+      const DatastoreService = global.app.services.DatastoreService
+
+      assert(DatastoreService)
+      assert.throws(DatastoreService.select, Error)
     })
   })
 
@@ -21,21 +27,6 @@ describe('Trailpack', () => {
     it('should return module name', () => {
       const pack = new TestPack(global.app)
       assert.equal(pack.name, 'testpack')
-    })
-  })
-
-  describe.skip('#expunge', () => {
-    it('should release module from cache', () => {
-      assert(require.cache)
-      assert(require.cache[require.resolve('./pack')])
-
-      // unload module!
-      /*
-      return pack.expunge(require.resolve('./pack'))
-        .then(() => {
-          assert.equal(require.cache[require.resolve('./pack')], undefined)
-        })
-        */
     })
   })
 
