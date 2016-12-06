@@ -1,6 +1,3 @@
-const _ = require('lodash')
-const smokesignals = require('smokesignals')
-
 const App = {
   api: {},
   config: {
@@ -35,7 +32,6 @@ const App = {
     },
     main: {
       packs: [
-        smokesignals.Trailpack,
         require('./pack')
       ],
       paths: {
@@ -44,8 +40,6 @@ const App = {
     }
   },
   pkg: {}
-
 }
 
-_.defaultsDeep(App, smokesignals.FailsafeConfig)
 module.exports = App
