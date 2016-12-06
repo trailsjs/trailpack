@@ -41,8 +41,7 @@
     "eslint": "^2.5",
     "eslint-config-trails": "^2",
     "mocha": "^2.5",
-    "smokesignals": "v2-latest",
-    "trails": "v2-latest"
+    "smokesignals": "v2-latest"
   },
   "engines": {
     "node": ">= 4.0.0"

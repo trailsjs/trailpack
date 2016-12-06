@@ -1,5 +1,6 @@
 'use strict'
 
+const EventEmitter = require('events').EventEmitter
 const _ = require('lodash')
 const lib = require('./lib')
 const defaultConfig = require('./config')
@@ -23,15 +24,15 @@ module.exports = class Trailpack {
    * constructor is not recommended.
    */
   constructor (app, pack) {
+    if (!(app instanceof EventEmitter)) {
+      throw new Error('The "app" argument must be of type EventEmitter')
+    }
     if (!pack.pkg) {
       throw new Error('Trailpack is missing package definition ("pack.pkg")')
     }
-    if (!pack.config) {
-      pack.config = { }
-    }
-    if (!pack.api) {
-      pack.api = { }
-    }
+    app.packs || (app.packs = { })
+    pack.config || (pack.config = { })
+    pack.api || (pack.api = { })
 
     _.merge(pack.api, require('./api'))
 
@@ -116,7 +117,7 @@ module.exports = class Trailpack {
    * Expose the application's logger directly on the Trailpack for convenience.
    */
   get log () {
-    return this.app.log
+    return this.app.config.log.logger
   }
 
   /**
