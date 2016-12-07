@@ -1,5 +1,6 @@
 'use strict'
 
+const EventEmitter = require('events').EventEmitter
 const lib = require('./lib')
 const defaultConfig = require('./config')
 
@@ -22,12 +23,15 @@ module.exports = class Trailpack {
    * constructor is not recommended.
    */
   constructor (app, pack) {
+    if (!(app instanceof EventEmitter)) {
+      throw new Error('The "app" argument must be of type EventEmitter')
+    }
     if (!pack.pkg) {
       throw new Error('Trailpack is missing package definition ("pack.pkg")')
     }
-    if (!pack.config) {
-      pack.config = { }
-    }
+    app.packs || (app.packs = { })
+    pack.config || (pack.config = { })
+    pack.api || (pack.api = { })
 
     Object.defineProperties(this, {
       app: {
@@ -82,7 +86,9 @@ module.exports = class Trailpack {
   /**
    * Unload this Trailpack. This method will instruct the trailpack to perform
    * any necessary cleanup with the expectation that the app will stop or reload
-   * soon thereafter.
+   * soon thereafter. If your trailpack runs a daemon or any other thing that may
+   * occupy the event loop, implementing this method is important for Trails to
+   * exit correctly.
    */
   unload () {
 
@@ -108,7 +114,7 @@ module.exports = class Trailpack {
    * Expose the application's logger directly on the Trailpack for convenience.
    */
   get log () {
-    return this.app.log
+    return this.app.config.log.logger
   }
 
   /**

@@ -1,5 +1,5 @@
 module.exports = {
   paths: {
-    root: __dirname + '../'
+    root: __dirname + '/../'
   }
 }
