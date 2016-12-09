@@ -4,7 +4,7 @@
   "description": "Trailpacks extend the functionality of the Trails framework.",
   "main": "index.js",
   "scripts": {
-    "test": "eslint index.js lib/ test/ && mocha"
+    "test": "eslint --ignore-path .gitignore . && istanbul cover _mocha"
   },
   "repository": {
     "type": "git",
