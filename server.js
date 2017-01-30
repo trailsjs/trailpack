@@ -32,7 +32,7 @@ module.exports = class ServerTrailpack extends Trailpack {
       return value
     })
   }
-  
+
   /**
    * Extract options from request query and return the object subset.
    */
