@@ -35,14 +35,14 @@
   },
   "homepage": "https://github.com/trailsjs/trailpack#readme",
   "dependencies": {
-    "lodash": "^4.17.2"
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "eslint": "^2.5",
-    "eslint-config-trails": "^2",
+    "eslint": "^3.14.1",
+    "eslint-config-trails": "^2.0.6",
     "istanbul": "^0.4.5",
-    "mocha": "^2.5",
-    "smokesignals": "v2-latest"
+    "mocha": "^3.2.0",
+    "smokesignals": "^2.1.1"
   },
   "engines": {
     "node": ">= 4.0.0"
