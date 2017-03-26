@@ -51,8 +51,8 @@
     "eslint": "^3",
     "eslint-config-trails": "^3",
     "istanbul": "^1.1.0-alpha.1",
-    "mocha": "^3.2.0",
-    "smokesignals": "^2.1.1"
+    "mocha": "^3",
+    "smokesignals": "^3"
   },
   "engines": {
     "node": ">= 7.6.0"
