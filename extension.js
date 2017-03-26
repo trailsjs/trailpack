@@ -1,5 +1,3 @@
-'use strict'
-
 const Trailpack = require('./')
 
 module.exports = class AbstractTrailpack extends Trailpack {

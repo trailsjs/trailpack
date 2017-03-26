@@ -1,5 +1,3 @@
-'use strict'
-
 const EventEmitter = require('events').EventEmitter
 const lib = require('./lib')
 const defaultConfig = require('./config')

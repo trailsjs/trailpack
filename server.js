@@ -1,6 +1,6 @@
-'use strict'
-
-const _ = require('lodash')
+const pick = require('lodash.pick')
+const omit = require('lodash.omit')
+const mapValues = require('lodash.mapvalues')
 const Trailpack = require('./')
 const footprintOptions = [
   'populate',
@@ -18,7 +18,7 @@ const footprintOptions = [
 module.exports = class ServerTrailpack extends Trailpack {
 
   _parseQuery(data) {
-    return _.mapValues(data, value => {
+    return mapValues(data, value => {
       if (value === 'true' || value === 'false') {
         value = value === 'true'
       }
@@ -38,14 +38,14 @@ module.exports = class ServerTrailpack extends Trailpack {
    * Extract options from request query and return the object subset.
    */
   getOptionsFromQuery(query) {
-    return this._parseQuery(_.pick(query, footprintOptions))
+    return this._parseQuery(pick(query, footprintOptions))
   }
 
   /**
    * Extract the criteria from the query
    */
   getCriteriaFromQuery(query) {
-    return this._parseQuery(_.omit(query, footprintOptions))
+    return this._parseQuery(omit(query, footprintOptions))
   }
 
   constructor (app, config) {

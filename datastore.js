@@ -1,6 +1,3 @@
-'use strict'
-
-const _ = require('lodash')
 const Trailpack = require('./')
 
 /**
@@ -17,7 +14,7 @@ module.exports = class DatastoreTrailpack extends Trailpack {
   initialize () {
     const config = this.app.config
 
-    _.each(this.app.models, model => {
+    this.app.models.forEach(model => {
       const modelConfig = model.constructor.config() || { }
       const store = modelConfig.store || config.database.models.defaultStore
 
