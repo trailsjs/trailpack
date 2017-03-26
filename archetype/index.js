@@ -1,5 +1,3 @@
-'use strict'
-
 const Trailpack = require('trailpack')
 
 module.exports = class Archetype extends Trailpack {
