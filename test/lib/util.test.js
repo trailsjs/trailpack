@@ -9,6 +9,7 @@ describe('lib.util', () => {
   describe('#mergeApplication', () => {
     let appA, appB
     const pack = {
+      pkg: { },
       api: {
         services: {
           TestService: class TestService {
@@ -78,6 +79,7 @@ describe('lib.util', () => {
   describe('#mergeApplicationConfig', () => {
     let mergedConfig
     const pack = {
+      pkg: { },
       config: {
         sectionA: {
           arrayConfig: [1, 2, 3, 4, 5, 6],
