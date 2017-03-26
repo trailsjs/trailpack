@@ -3,9 +3,6 @@ os:
   - linux
   - osx
 node_js:
-- 4
-- 5
-- 6
 - 7
 
 after_script:
@@ -28,4 +25,4 @@ deploy:
   on:
     tags: true
     repo: trailsjs/trailpack
-    node: 6
+    node: 7
