@@ -77,7 +77,7 @@ module.exports = class Trailpack {
    * Start any services or listeners necessary for this pack. Trailpacks that
    * run daemon-like services should override this method.
    */
-  initialize () {
+  async initialize () {
 
   }
 
@@ -88,7 +88,7 @@ module.exports = class Trailpack {
    * occupy the event loop, implementing this method is important for Trails to
    * exit correctly.
    */
-  unload () {
+  async unload () {
 
   }
 
