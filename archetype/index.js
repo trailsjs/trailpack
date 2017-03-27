@@ -19,7 +19,14 @@ module.exports = class Archetype extends Trailpack {
   /**
    * TODO document method
    */
-  initialize () {
+  async initialize () {
+
+  }
+
+  /**
+   * TODO document method
+   */
+  async unload () {
 
   }
 

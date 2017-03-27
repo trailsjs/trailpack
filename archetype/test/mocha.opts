@@ -1,7 +1,8 @@
 --reporter spec
 --recursive
 --full-trace
---slow 50
+--no-exit
 --check-leaks
 --globals app
---fgrep app.js --invert
+
+test/index.js test/*.test.js
