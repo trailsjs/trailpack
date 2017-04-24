@@ -11,12 +11,7 @@ framework. (**Application functionality** should be extended using
 Services).
 
 ## Usage
-This module is a class which should be extended by all trailpacks.
-
-#### Implement
-
-See [`archetype/index.js`](https://github.com/trailsjs/trailpack/blob/master/archetype/index.js)
-for more details.
+This class should be extended by all trailpacks.
 
 ```js
 const Trailpack = require('trailpack')
@@ -162,6 +157,11 @@ boot process so that a custom method can be run during application startup.
 
 #### `misc`
 All trailpacks that don't fit previous types.
+
+### Documentation
+
+- [**Trailpack Implementation Guide**](https://trailsjs.io/doc/en/ref/trailpack)
+- [**API Reference**](https://trailsjs.io/doc/en/extend/trailpack)
 
 ## Contributing
 We love contributions! Please see our [Contribution Guide](https://github.com/trailsjs/trails/blob/master/.github/CONTRIBUTING.md)

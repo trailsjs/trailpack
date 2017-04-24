@@ -4,7 +4,7 @@ const defaultConfig = require('./config')
 
 /**
  * @class Trailpack
- * @see {@link http://trailsjs.io/doc/trailpack}
+ * @see {@link https://trailsjs.io/doc/en/ref/trailpack}
  */
 module.exports = class Trailpack {
 
@@ -112,7 +112,7 @@ module.exports = class Trailpack {
    * Expose the application's logger directly on the Trailpack for convenience.
    */
   get log () {
-    return this.app.config.log.logger
+    return this.app.log
   }
 
   /**

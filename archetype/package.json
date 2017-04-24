@@ -7,15 +7,15 @@
     "trailjs"
   ],
   "dependencies": {
-    "trailpack": "^3"
+    "trailpack": "next"
   },
   "devDependencies": {
     "lodash": "^4.11.1",
-    "trails": "^3",
+    "trails": "next",
     "eslint": "^3",
     "eslint-config-trails": "^3",
     "mocha": "^3",
-    "smokesignals": "^3"
+    "smokesignals": "next"
   },
   "scripts": {
     "test": "eslint . && mocha"
