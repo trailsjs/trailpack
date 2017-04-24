@@ -1,11 +1,9 @@
 const assert = require('assert')
 
-describe('Trailpack', () => {
+describe('<%= packName %>', () => {
   let pack
   before(() => {
-    // pack = global.app.packs.waterline
-  })
-  it.skip('TODO should be loaded into the app.packs collection', () => {
+    pack = global.app.packs.<%= packBasename %>
     assert(pack)
   })
   describe('#validate', () => {
@@ -15,6 +13,9 @@ describe('Trailpack', () => {
     it.skip('TODO test')
   })
   describe('#initialize', () => {
+    it.skip('TODO test')
+  })
+  describe('#unload', () => {
     it.skip('TODO test')
   })
 })
