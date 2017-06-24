@@ -2,6 +2,10 @@ const Trailpack = require('trailpack')
 
 module.exports = class Archetype extends Trailpack {
 
+  static get lifecycle () {
+    return { }
+  }
+
   /**
    * TODO document method
    */

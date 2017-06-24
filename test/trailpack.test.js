@@ -1,5 +1,3 @@
-'use strict'
-
 const assert = require('assert')
 const EventEmitter = require('events').EventEmitter
 const smokesignals = require('smokesignals')
@@ -26,7 +24,7 @@ describe('Trailpack', () => {
       assert(pack)
     })
     it('should emit "constructed" event', done => {
-      app.once('trailpack:testpack:constructed', done)
+      app.once('trailpack:testpack:constructed', pack => done())
       new TestPack(app)
     })
   })
@@ -35,13 +33,6 @@ describe('Trailpack', () => {
     it('should return module name', () => {
       const pack = new TestPack(app)
       assert.equal(pack.name, 'testpack')
-    })
-  })
-
-  describe('#log', () => {
-    it('should work', () => {
-      const pack = new TestPack(app)
-      pack.log.debug('hello')
     })
   })
 })

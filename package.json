@@ -4,7 +4,7 @@
   "description": "Trailpacks extend the functionality of the Trails framework.",
   "main": "index.js",
   "scripts": {
-    "test": "eslint --ignore-path .gitignore . && istanbul cover _mocha"
+    "test": "eslint --ignore-path .gitignore *.js config test && nyc mocha"
   },
   "repository": {
     "type": "git",
@@ -35,23 +35,13 @@
   },
   "homepage": "https://github.com/trailsjs/trailpack#readme",
   "dependencies": {
-    "lodash.defaultsdeep": "^4.6.0",
-    "lodash.intersection": "^4.4.0",
-    "lodash.isarray": "^4.0.0",
-    "lodash.isobject": "^3.0.2",
-    "lodash.isplainobject": "^4.0.6",
-    "lodash.isundefined": "^3.0.1",
-    "lodash.mapvalues": "^4.6.0",
-    "lodash.mergewith": "^4.6.0",
-    "lodash.omit": "^4.5.0",
-    "lodash.pick": "^4.4.0",
-    "lodash.union": "^4.6.0"
+    "lodash.defaultsdeep": "^4.6.0"
   },
   "devDependencies": {
     "eslint": "^3",
     "eslint-config-trails": "^3",
-    "istanbul": "^1.1.0-alpha.1",
     "mocha": "^3",
+    "nyc": "^11.0.2",
     "smokesignals": "^3"
   },
   "engines": {

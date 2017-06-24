@@ -1,12 +1,29 @@
 const EventEmitter = require('events').EventEmitter
-const lib = require('./lib')
 const defaultConfig = require('./config')
+const defaultsDeep = require('lodash.defaultsdeep')
 
 /**
  * @class Trailpack
  * @see {@link https://trailsjs.io/doc/en/ref/trailpack}
  */
 module.exports = class Trailpack {
+
+  /**
+   * The Trailpack lifecycle. At each stage (configure, initialize) define
+   * preconditions ("listen") and postconditions ("emit") of the trailpack.
+   */
+  static get lifecycle () {
+    return {
+      configure: {
+        listen: [ ],
+        emit: [ ]
+      },
+      initialize: {
+        listen: [ ],
+        emit: [ ]
+      }
+    }
+  }
 
   /**
    * @constructor
@@ -20,16 +37,13 @@ module.exports = class Trailpack {
    * their own pack definitions. Implementing application logic in the trailpack
    * constructor is not recommended.
    */
-  constructor (app, pack) {
+  constructor (app, { pkg, config = { }, api = { } }) {
     if (!(app instanceof EventEmitter)) {
       throw new Error('The "app" argument must be of type EventEmitter')
     }
-    if (!pack.pkg) {
+    if (!pkg) {
       throw new Error('Trailpack is missing package definition ("pack.pkg")')
     }
-    app.packs || (app.packs = { })
-    pack.config || (pack.config = { })
-    pack.api || (pack.api = { })
 
     Object.defineProperties(this, {
       app: {
@@ -38,21 +52,22 @@ module.exports = class Trailpack {
         value: app
       },
       pkg: {
-        value: Object.freeze(pack.pkg),
+        value: Object.freeze(pkg),
         writable: false,
         enumerable: false
       },
+      api: {
+        value: api,
+        writable: true,
+        configurable: true
+      },
       config: {
-        value: lib.Util.mergeDefaultTrailpackConfig(pack.config.trailpack, defaultConfig),
+        value: defaultsDeep(config.trailpack, defaultConfig.trailpack),
         enumerable: false
       }
     })
 
-    lib.Util.mergeApplication(this.app, pack)
-    lib.Util.mergeApplicationConfig(this.app, pack)
-
-    this.app.packs[this.name] = this
-    this.emit(`trailpack:${this.name}:constructed`)
+    this.emit(`trailpack:${this.name}:constructed`, this)
   }
 
   /**
