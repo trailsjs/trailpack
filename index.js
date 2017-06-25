@@ -1,4 +1,5 @@
 const EventEmitter = require('events').EventEmitter
+const defaultsDeep = require('lodash.defaultsdeep')
 
 /**
  * @class Trailpack
@@ -11,7 +12,7 @@ module.exports = class Trailpack {
    * preconditions ("listen") and postconditions ("emit") of the trailpack.
    */
   get lifecycle () {
-    return this.config.lifecycle || {
+    return {
       configure: {
         listen: [ ],
         emit: [ ]
@@ -43,6 +44,7 @@ module.exports = class Trailpack {
       throw new Error('Trailpack is missing package definition ("pack.pkg")')
     }
 
+
     Object.defineProperties(this, {
       app: {
         enumberable: false,
@@ -64,6 +66,7 @@ module.exports = class Trailpack {
       }
     })
 
+    defaultsDeep(this.config.lifecycle, this.lifecycle)
     this.emit(`trailpack:${this.name}:constructed`, this)
   }
 
