@@ -67,7 +67,7 @@ module.exports = class Trailpack {
     })
 
     defaultsDeep(this.config.lifecycle, this.lifecycle)
-    this.emit(`trailpack:${this.name}:constructed`, this)
+    this.app.emit(`trailpack:${this.name}:constructed`, this)
   }
 
   /**
@@ -107,36 +107,6 @@ module.exports = class Trailpack {
 
   }
 
-  emit () {
-    return this.app.emit.apply(this.app, arguments)
-  }
-
-  once () {
-    return this.app.once.apply(this.app, arguments)
-  }
-
-  on () {
-    return this.app.on.apply(this.app, arguments)
-  }
-
-  after () {
-    return this.app.after.apply(this.app, arguments)
-  }
-
-  /**
-   * Expose the application's logger directly on the Trailpack for convenience.
-   */
-  get log () {
-    return this.app.log
-  }
-
-  /**
-   * Expose the application's packs directly on the Trailpack for convenience.
-   */
-  get packs () {
-    return this.app.packs
-  }
-
   /**
    * Return the name of this Trailpack. By default, this is the name of the
    * npm module (in package.json). This method can be overridden for trailpacks
@@ -146,5 +116,9 @@ module.exports = class Trailpack {
    */
   get name () {
     return this.pkg.name.replace(/trailpack\-/, '')
+  }
+
+  get type () {
+    return 'misc'
   }
 }

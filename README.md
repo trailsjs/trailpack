@@ -5,24 +5,36 @@
 [![Build status][ci-image]][ci-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
 [![Code Climate][codeclimate-image]][codeclimate-url]
+[![Follow @trailsjs on Twitter][twitter-image]][twitter-url]
 
 Trailpack Interface. Trailpacks extend the capability of the Trails
 framework. (**Application functionality** should be extended using
 Services).
 
 ## Usage
-This class should be extended by all trailpacks.
+
+This class should be extended by all trailpacks. Override the trailpack API
+methods.
 
 ```js
 const Trailpack = require('trailpack')
 
 class ExampleTrailpack extends Trailpack {
-  constructor (app) {
-    super(app, {
-      config: require('./config'),
-      api: require('./api'),
-      pkg: require('./package')
-    })
+
+  /**
+   * Configure the lifecycle of this trailpacks.
+   */
+  get lifecycle () {
+    return {
+      initialize: {
+
+        /**
+         * Only initialize this trailpack after trailpack-router has been
+         * initialized.
+         */
+        listen: [ 'trailpack:router:initialize' ]
+      }
+    }
   }
 
   validate () {
@@ -42,21 +54,15 @@ class ExampleTrailpack extends Trailpack {
   unload () {
     clearInterval(this.interval)
   }
-}
-```
 
-#### Configure
-
-See [`archetype/config/trailpack.js`](https://github.com/trailsjs/trailpack/blob/master/archetype/config/trailpack.js)
-for more details.
-```js
-// config/trailpack.js
-module.exports = {
-  type: 'misc',
-  lifecycle: {
-    configure: [ ],
-    initialize: [ ]
+  constructor (app) {
+    super(app, {
+      config: require('./config'),
+      api: require('./api'),
+      pkg: require('./package')
+    })
   }
+
 }
 ```
 
@@ -122,12 +128,29 @@ These trailpacks provide critical framework-level functionality that most/all
 other trailpacks will depend on, such as [`core`](https://github.com/trailsjs/trailpack-core)
 and [`router`](https://github.com/trailsjs/trailpack-router).
 
+```js
+const SystemTrailpack = require('trailpack/system')
+
+module.exports = class HapiTrailpack extends SystemTrailpack {
+
+}
+```
+
 #### `server`
 These allow you to use various node.js web server frameworks with Trails, such
 as [`express`](https://github.com/trailsjs/trailpack-express4),
 [`hapi`](https://github.com/trailsjs/trailpack-hapi),
 and [`koa`](https://github.com/trailsjs/trailpack-koa). Typically, only one
 server pack will be installed in a Trails Application.
+
+
+```js
+const ServerTrailpack = require('trailpack/server')
+
+module.exports = class HapiTrailpack extends ServerTrailpack {
+
+}
+```
 
 #### `datastore`
 Datastore trailpacks provide a unified way to configure various persistence
@@ -136,6 +159,15 @@ stores. These may be ORMs, query builders, or database drivers. Examples include
 and [`waterline`](https://github.com/trailsjs/trailpack-waterline). Typically,
 only one datastore pack will be installed in a Trails Application.
 
+
+```js
+const DatastoreTrailpack = require('trailpack/datastore')
+
+module.exports = class KnexTrailpack extends DatastoreTrailpack {
+
+}
+```
+
 #### `tool`
 Every application needs a suite of tools for development, debugging,
 monitoring, etc. These trailpacks integrate various modules with Trails
@@ -143,6 +175,15 @@ to provide a richer developer experience. Some tool packs include
 [`autoreload`](https://github.com/trailsjs/trailpack-autoreload), [`webpack`](https://github.com/trailsjs/trailpack-webpack),
 [`repl`](https://github.com/trailsjs/trailpack-repl). Trails Application logic
 will typically not rely on these trailpacks directly.
+
+
+```js
+const ToolTrailpack = require('trailpack/tool')
+
+module.exports = class WebpackTrailpack extends ToolTrailpack {
+
+}
+```
 
 #### `extension`
 Extension packs exist to augment, or extend, the functionality of other
@@ -155,8 +196,26 @@ lets you plugin an entire sails project directly into a Trails Application.
 [`bootstrap`](https://github.com/trailsjs/trailpack-bootstrap) extends the Trails
 boot process so that a custom method can be run during application startup.
 
+
+```js
+const ExtensionTrailpack = require('trailpack/extension')
+
+module.exports = class FootprintsTrailpack extends ExtensionTrailpack {
+
+}
+```
+
 #### `misc`
 All trailpacks that don't fit previous types.
+
+
+```js
+const Trailpack = require('trailpack')
+
+module.exports = class ExampleTrailpack extends Trailpack {
+
+}
+```
 
 ### Documentation
 
@@ -182,4 +241,6 @@ for more information.
 [codeclimate-url]: https://codeclimate.com/github/trailsjs/trailpack
 [gitter-image]: http://img.shields.io/badge/+%20GITTER-JOIN%20CHAT%20%E2%86%92-1DCE73.svg?style=flat-square
 [gitter-url]: https://gitter.im/trailsjs/trails
+[twitter-image]: https://img.shields.io/twitter/follow/trailsjs.svg?style=social
+[twitter-url]: https://twitter.com/trailsjs
 
