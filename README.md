@@ -93,7 +93,7 @@ into the application configuration.
 #### `validate()`
 Validate the preconditions for proper functioning of this trailpack. For
 example, if this trailpack requires that a database is configured in
-`config/database.js`, this method should validate this. This method should incur
+`config/stores.js`, this method should validate this. This method should incur
 no side-effects. *Do not alter any extant configuration.*
 
 #### `configure()`
@@ -131,7 +131,7 @@ server pack will be installed in a Trails Application.
 
 #### `datastore`
 Datastore trailpacks provide a unified way to configure various persistence
-stores. These may be ORMs, query builders, or database drives. Examples include
+stores. These may be ORMs, query builders, or database drivers. Examples include
 [`knex`](https://github.com/trailsjs/trailpack-knex), [`graphql`](https://github.com/trailsjs/trailpack-graphql)
 and [`waterline`](https://github.com/trailsjs/trailpack-waterline). Typically,
 only one datastore pack will be installed in a Trails Application.
