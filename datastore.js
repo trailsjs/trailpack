@@ -14,7 +14,9 @@ module.exports = class DatastoreTrailpack extends Trailpack {
   initialize () {
     Object.entries(this.app.models).forEach(([ modelName, model ]) => {
       const modelConfig = model.constructor.config() || { }
-      model.store = modelConfig.store
+      const store = modelConfig.store || this.app.get('stores.models.defaultStore')
+
+      model.store = store
     })
   }
 
