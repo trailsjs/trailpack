@@ -26,10 +26,12 @@ module.exports = class ServerTrailpack extends Trailpack {
       if (value === '%00' || value === 'null') {
         value = null
       }
+
       const parseValue = parseFloat(value)
-      if (!isNaN(parseValue)) {
+      if (!isNaN(parseValue) && isFinite(value)) {
         value = parseValue
       }
+
       return value
     })
   }
