@@ -154,7 +154,7 @@ module.exports = class HapiTrailpack extends ServerTrailpack {
 
 #### `datastore`
 Datastore trailpacks provide a unified way to configure various persistence
-stores. These may be ORMs, query builders, or database drives. Examples include
+stores. These may be ORMs, query builders, or database drivers. Examples include
 [`knex`](https://github.com/trailsjs/trailpack-knex), [`graphql`](https://github.com/trailsjs/trailpack-graphql)
 and [`waterline`](https://github.com/trailsjs/trailpack-waterline). Typically,
 only one datastore pack will be installed in a Trails Application.
