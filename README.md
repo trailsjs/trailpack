@@ -45,13 +45,13 @@ class ExampleTrailpack extends Trailpack {
     this.app.config.example.happy = true
   }
 
-  initialize () {
+  async initialize () {
     this.interval = setInterval(() => {
       this.log.debug('happy?', this.app.config.example.happy)
     }, 1000)
   }
 
-  unload () {
+  async unload () {
     clearInterval(this.interval)
   }
 
