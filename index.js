@@ -106,6 +106,13 @@ module.exports = class Trailpack {
   async unload () {
 
   }
+  
+  /**
+   * Expose the app.log directly on the Trailpack for convenience.
+   */
+  get log () {
+    return this.app.log
+  }
 
   /**
    * Return the name of this Trailpack. By default, this is the name of the
